@@ -1,0 +1,3174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>أكاديمية Tandem t:slim X2 التفاعلية | مختبر المحاكاة اللمسية 3D</title>
+  <style>
+    :root {
+      --bg-primary: #070d19;
+      --bg-secondary: #0d1629;
+      --bg-card: rgba(17, 28, 51, 0.84);
+      --bg-card-solid: #111c33;
+      --bg-elevated: rgba(24, 39, 70, 0.92);
+      --border-glass: rgba(56, 189, 248, 0.25);
+      --border-subtle: rgba(148, 163, 184, 0.18);
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent-cyan: #0ea5e9;
+      --accent-teal: #14b8a6;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --accent-indigo: #6366f1;
+      --shadow-glow: 0 12px 36px rgba(14, 165, 233, 0.16);
+      --mat-bg: #081224;
+      --mat-grid: rgba(56, 189, 248, 0.08);
+    }
+
+    html[data-theme="light"] {
+      --bg-primary: #f0f6fc;
+      --bg-secondary: #e2ecf7;
+      --bg-card: rgba(255, 255, 255, 0.92);
+      --bg-card-solid: #ffffff;
+      --bg-elevated: rgba(241, 247, 254, 0.96);
+      --border-glass: rgba(2, 132, 199, 0.26);
+      --border-subtle: rgba(100, 116, 139, 0.2);
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --accent-cyan: #0284c7;
+      --accent-teal: #0d9488;
+      --accent-emerald: #059669;
+      --accent-amber: #d97706;
+      --accent-rose: #e11d48;
+      --accent-indigo: #4f46e5;
+      --shadow-glow: 0 12px 32px rgba(2, 132, 199, 0.12);
+      --mat-bg: #e7f1fb;
+      --mat-grid: rgba(2, 132, 199, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', 'Tajawal', 'Geeza Pro', 'Segoe UI', Tahoma, Arial, sans-serif;
+    }
+
+    html {
+      background-color: #070d19;
+      color: #f1f5f9;
+    }
+
+    html[data-theme="light"] {
+      background-color: #f0f6fc;
+      color: #0f172a;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      background-image:
+        radial-gradient(circle at 12% 10%, rgba(14, 165, 233, 0.14), transparent 36%),
+        radial-gradient(circle at 88% 85%, rgba(20, 184, 166, 0.12), transparent 38%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Top Clinical Header */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background-color: var(--bg-card-solid);
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-glass);
+      padding: 0.7rem 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.85rem;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .brand-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-teal));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 18px rgba(14, 165, 233, 0.35);
+      flex-shrink: 0;
+    }
+
+    .brand-title h1 {
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    .brand-title p {
+      font-size: 0.76rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 0.45rem;
+      background: var(--bg-secondary);
+      padding: 0.32rem;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+    }
+
+    .nav-tab {
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      padding: 0.5rem 0.95rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.86rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+
+    .nav-tab:hover {
+      color: var(--text-primary);
+      background: rgba(14, 165, 233, 0.1);
+    }
+
+    .nav-tab.active {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-teal));
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.32);
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-icon {
+      border: 1px solid var(--border-glass);
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      padding: 0.48rem 0.8rem;
+      border-radius: 11px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-icon:hover {
+      border-color: var(--accent-cyan);
+      transform: translateY(-1px);
+    }
+
+    .container {
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 1.1rem;
+    }
+
+    .tab-panel {
+      display: none;
+      animation: fadeSlide 0.28s ease;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .glass-card {
+      background-color: var(--bg-card-solid);
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-glass);
+      border-radius: 18px;
+      padding: 1rem;
+      box-shadow: var(--shadow-glow);
+    }
+
+    /* Lab Toolbar */
+    .lab-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .mode-switch {
+      display: inline-flex;
+      background: var(--bg-secondary);
+      padding: 0.28rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .mode-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      padding: 0.42rem 0.85rem;
+      border-radius: 9px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .mode-btn.active {
+      background: var(--accent-cyan);
+      color: #fff;
+    }
+
+    .mode-btn.exam.active {
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      color: #fff;
+    }
+
+    .step-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      align-items: center;
+    }
+
+    .step-pill {
+      padding: 0.32rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .step-pill.current {
+      border-color: var(--accent-cyan);
+      background: rgba(14, 165, 233, 0.2);
+      color: var(--text-primary);
+    }
+
+    .step-pill.done {
+      border-color: var(--accent-emerald);
+      background: rgba(16, 185, 129, 0.18);
+      color: var(--accent-emerald);
+    }
+
+    .exam-hud {
+      display: none;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(244, 63, 94, 0.14);
+      border: 1px solid rgba(244, 63, 94, 0.4);
+      padding: 0.38rem 0.85rem;
+      border-radius: 11px;
+      font-weight: 800;
+      font-size: 0.84rem;
+    }
+
+    .exam-hud.visible {
+      display: inline-flex;
+    }
+
+    .timer-badge {
+      background: #ef4444;
+      color: #fff;
+      padding: 0.15rem 0.5rem;
+      border-radius: 7px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* 3-COLUMN WORKSPACE ARCHITECTURE
+       Left = Vertical Tool Shelf
+       Center = Hands-On Tactile Simulation Arena
+       Right = Ready Tools Dock & Live Telemetry */
+    .workspace-grid {
+      direction: ltr;
+      display: grid;
+      grid-template-columns: 235px 1fr 245px;
+      gap: 0.9rem;
+      align-items: stretch;
+    }
+
+    .workspace-col {
+      direction: rtl;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    @media (max-width: 1140px) {
+      .workspace-grid {
+        grid-template-columns: 1fr;
+        direction: rtl;
+      }
+    }
+
+    .col-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      font-weight: 800;
+      font-size: 0.92rem;
+    }
+
+    .badge-count {
+      background: rgba(14, 165, 233, 0.18);
+      color: var(--accent-cyan);
+      padding: 0.1rem 0.52rem;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 800;
+    }
+
+    /* Vertical Tool Shelf */
+    .tool-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .tool-item {
+      background: var(--bg-elevated);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 13px;
+      padding: 0.55rem 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      cursor: grab;
+      transition: all 0.2s ease;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .tool-item:hover {
+      border-color: var(--accent-cyan);
+      transform: translateX(-2px);
+      box-shadow: 0 6px 16px rgba(14, 165, 233, 0.18);
+    }
+
+    .tool-item.active-tool {
+      border-color: var(--accent-cyan);
+      background: rgba(14, 165, 233, 0.16);
+      box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.25);
+    }
+
+    .tool-item.used {
+      border-color: var(--accent-emerald);
+    }
+
+    .tool-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(14, 165, 233, 0.12);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .tool-meta h4 {
+      font-size: 0.81rem;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .tool-meta span {
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      display: block;
+    }
+
+    /* Center Interactive Bench */
+    .bench-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.55rem;
+    }
+
+    .view-toggle {
+      display: inline-flex;
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      padding: 0.24rem;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .view-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      padding: 0.34rem 0.72rem;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .view-btn.active {
+      background: var(--accent-teal);
+      color: #fff;
+    }
+
+    .stage-banner {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.16), rgba(20, 184, 166, 0.14));
+      border: 1px solid var(--border-glass);
+      border-radius: 14px;
+      padding: 0.72rem 0.95rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .stage-banner h3 {
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+    }
+
+    .stage-banner p {
+      font-size: 0.81rem;
+      color: var(--text-secondary);
+      width: 100%;
+    }
+
+    .hand-cue-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(16, 185, 129, 0.18);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      color: var(--accent-emerald);
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      animation: pulseGlow 2s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.3); }
+      50% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    }
+
+    /* Coaching Alert */
+    .coaching-alert {
+      display: none;
+      background: rgba(244, 63, 94, 0.16);
+      border: 1px solid var(--accent-rose);
+      border-right: 5px solid var(--accent-rose);
+      border-radius: 11px;
+      padding: 0.6rem 0.85rem;
+      font-size: 0.81rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      animation: shake 0.35s ease;
+    }
+
+    .coaching-alert.success {
+      background: rgba(16, 185, 129, 0.16);
+      border-color: var(--accent-emerald);
+      border-right-color: var(--accent-emerald);
+    }
+
+    .coaching-alert.visible {
+      display: block;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+    }
+
+    /* Tactile Simulation Arena */
+    .sim-arena {
+      position: relative;
+      border-radius: 16px;
+      border: 1.5px solid var(--border-glass);
+      background-color: var(--mat-bg);
+      background-image:
+        linear-gradient(to right, var(--mat-grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--mat-grid) 1px, transparent 1px);
+      background-size: 26px 26px;
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .bench-split {
+      display: grid;
+      grid-template-columns: 1.45fr 0.85fr;
+      gap: 0.85rem;
+      align-items: stretch;
+    }
+
+    @media (max-width: 880px) {
+      .bench-split {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Hands-On SVG Manipulation Mat */
+    .tactile-mat-wrap {
+      background-color: var(--bg-card-solid);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 0.65rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mat-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.77rem;
+      font-weight: 800;
+      color: var(--text-secondary);
+      padding-bottom: 0.35rem;
+      border-bottom: 1px dashed var(--border-subtle);
+    }
+
+    .tactile-svg-box {
+      width: 100%;
+      height: 365px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 50% 45%, rgba(14, 165, 233, 0.09), rgba(6, 12, 24, 0.55));
+      border: 1px solid var(--border-subtle);
+      position: relative;
+      touch-action: none;
+      user-select: none;
+      overflow: hidden;
+    }
+
+    #tactileSvg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      touch-action: none;
+    }
+
+    .grabbable {
+      cursor: grab;
+    }
+
+    .grabbable:active {
+      cursor: grabbing;
+    }
+
+    .mat-footer-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .progress-chip {
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 0.3rem 0.65rem;
+      border-radius: 8px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-action {
+      border: none;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-teal));
+      color: #fff;
+      padding: 0.45rem 0.85rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-action:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(14, 165, 233, 0.3);
+    }
+
+    .btn-action.secondary {
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-glass);
+    }
+
+    /* Realistic Tandem t:slim X2 Hardware Simulator */
+    .pump-panel-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--bg-card-solid);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 0.65rem;
+    }
+
+    .tandem-device {
+      width: 225px;
+      background: linear-gradient(160deg, #334155, #0f172a);
+      border-radius: 26px;
+      padding: 11px 11px 14px;
+      border: 2px solid #475569;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45), inset 0 1px 2px rgba(255,255,255,0.2);
+      color: #f8fafc;
+    }
+
+    .pump-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 7px;
+      padding: 0 4px;
+    }
+
+    .pump-led {
+      width: 34px;
+      height: 6px;
+      border-radius: 999px;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      animation: ledPulse 2s infinite;
+    }
+
+    .pump-led.yellow {
+      background: #f59e0b;
+      box-shadow: 0 0 10px #f59e0b;
+    }
+
+    @keyframes ledPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    .pump-screen {
+      background: #060b14;
+      border: 2px solid #1e293b;
+      border-radius: 14px;
+      min-height: 270px;
+      padding: 9px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 0.75rem;
+    }
+
+    .pump-status-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 5px;
+      font-size: 0.68rem;
+      color: #94a3b8;
+    }
+
+    .pump-t-btn {
+      margin-top: 8px;
+      width: 46px;
+      height: 21px;
+      border-radius: 999px;
+      background: #1e293b;
+      border: 1.5px solid #38bdf8;
+      color: #38bdf8;
+      font-weight: 900;
+      font-size: 0.78rem;
+      display: grid;
+      place-items: center;
+      margin-inline: auto;
+      cursor: pointer;
+    }
+
+    .screen-btn {
+      width: 100%;
+      padding: 7px 8px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      background: #1e293b;
+      color: #f8fafc;
+      font-weight: 700;
+      font-size: 0.75rem;
+      cursor: pointer;
+      margin-top: 5px;
+      text-align: center;
+      transition: 0.18s;
+    }
+
+    .screen-btn:hover {
+      background: #0284c7;
+      border-color: #38bdf8;
+    }
+
+    .screen-btn.primary {
+      background: #0284c7;
+      border-color: #38bdf8;
+    }
+
+    .pin-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      margin-top: 7px;
+    }
+
+    .pin-key {
+      padding: 9px 0;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      background: #0f172a;
+      color: #38bdf8;
+      font-weight: 800;
+      font-size: 0.92rem;
+      cursor: pointer;
+    }
+
+    .pin-key:hover {
+      background: #0284c7;
+      color: #fff;
+    }
+
+    /* 3D Canvas Studio */
+    #studio3dContainer {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    #studio3dContainer.active {
+      display: flex;
+    }
+
+    #pump3dCanvas {
+      width: 100%;
+      max-width: 620px;
+      height: 340px;
+      border-radius: 14px;
+      background: radial-gradient(circle at center, #132342, #060b16);
+      border: 1px solid var(--border-glass);
+      cursor: grab;
+      touch-action: none;
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    /* Right Column: Ready Tools Dock */
+    .ready-dock {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      min-height: 165px;
+    }
+
+    .ready-item {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 10px;
+      padding: 0.5rem 0.65rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .telemetry-box {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 0.7rem;
+      font-size: 0.77rem;
+    }
+
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.25rem 0;
+      border-bottom: 1px dashed var(--border-subtle);
+    }
+
+    .telemetry-row:last-child {
+      border-bottom: none;
+    }
+
+    /* TAB 2: GUIDE & SYMBOLS */
+    .guide-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .search-input {
+      flex: 1;
+      min-width: 250px;
+      padding: 0.62rem 0.95rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-glass);
+      background-color: var(--bg-card-solid);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-size: 0.88rem;
+      outline: none;
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .filter-pill {
+      padding: 0.42rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-card-solid);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .filter-pill.active {
+      background: var(--accent-cyan);
+      color: #fff;
+      border-color: var(--accent-cyan);
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(305px, 1fr));
+      gap: 0.95rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .symbol-card {
+      background-color: var(--bg-card-solid);
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 16px;
+      padding: 0.95rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .symbol-header {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .symbol-svg-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 13px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .symbol-card h3 {
+      font-size: 0.94rem;
+      font-weight: 800;
+    }
+
+    .symbol-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(14, 165, 233, 0.16);
+      color: var(--accent-cyan);
+    }
+
+    .symbol-card p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .arrows-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .arrow-box {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 0.6rem;
+      text-align: center;
+    }
+
+    .arrow-glyph {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--accent-cyan);
+      line-height: 1.2;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 14px;
+      border: 1px solid var(--border-glass);
+      margin-top: 0.7rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.83rem;
+    }
+
+    th {
+      background: var(--bg-secondary);
+      color: var(--accent-cyan);
+      font-weight: 800;
+      text-align: right;
+      padding: 0.7rem 0.85rem;
+      border-bottom: 1px solid var(--border-glass);
+    }
+
+    td {
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: top;
+    }
+
+    .code-badge {
+      display: inline-block;
+      padding: 0.16rem 0.52rem;
+      border-radius: 7px;
+      font-weight: 800;
+      font-family: monospace;
+      font-size: 0.84rem;
+      background: rgba(244, 63, 94, 0.16);
+      color: var(--accent-rose);
+      border: 1px solid rgba(244, 63, 94, 0.35);
+    }
+
+    .code-badge.warn {
+      background: rgba(245, 158, 11, 0.16);
+      color: var(--accent-amber);
+      border-color: rgba(245, 158, 11, 0.35);
+    }
+
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+      gap: 0.8rem;
+      margin-top: 0.9rem;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.14), rgba(14, 165, 233, 0.12));
+      border: 1px solid var(--border-glass);
+      border-radius: 14px;
+      padding: 0.85rem 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .contact-num {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--accent-cyan);
+      direction: ltr;
+    }
+
+    /* TAB 3: AI ASSISTANT */
+    .ai-layout {
+      display: grid;
+      grid-template-columns: 310px 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 960px) {
+      .ai-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .kb-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .file-drop {
+      border: 2px dashed var(--border-glass);
+      border-radius: 14px;
+      padding: 0.95rem;
+      text-align: center;
+      background: var(--bg-secondary);
+      cursor: pointer;
+    }
+
+    .kb-doc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.42rem;
+      max-height: 210px;
+      overflow-y: auto;
+    }
+
+    .kb-doc-item {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 9px;
+      padding: 0.42rem 0.6rem;
+      font-size: 0.76rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-box {
+      display: flex;
+      flex-direction: column;
+      height: 550px;
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      padding: 0.5rem;
+    }
+
+    .msg {
+      max-width: 85%;
+      padding: 0.75rem 0.95rem;
+      border-radius: 15px;
+      font-size: 0.86rem;
+      line-height: 1.65;
+    }
+
+    .msg.user {
+      align-self: flex-start;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-teal));
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+
+    .msg.bot {
+      align-self: flex-end;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-glass);
+      color: var(--text-primary);
+      border-bottom-left-radius: 4px;
+    }
+
+    .quick-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      padding: 0.6rem 0;
+    }
+
+    .chip {
+      border: 1px solid var(--border-glass);
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      padding: 0.32rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .chat-input-row {
+      display: flex;
+      gap: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .chat-input {
+      flex: 1;
+      padding: 0.62rem 0.9rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-glass);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-size: 0.86rem;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP CLINICAL HEADER -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-badge">t:X2</div>
+      <div class="brand-title">
+        <h1>مختبر التدريب اللمسي لمضخة Tandem t:slim X2</h1>
+        <p>تجربة تفاعلية حية باللمس والسحب الحر | Control-IQ 7.8.1 & Dexcom G7</p>
+      </div>
+    </div>
+
+    <nav class="nav-tabs" role="tablist">
+      <button class="nav-tab active" data-tab="labTab" onclick="switchTab('labTab', this)">
+        <span>🖐️</span> طاولة المحاكاة اللمسية الحية
+      </button>
+      <button class="nav-tab" data-tab="guideTab" onclick="switchTab('guideTab', this)">
+        <span>📘</span> الدليل الشامل والرموز الرسمية
+      </button>
+      <button class="nav-tab" data-tab="aiTab" onclick="switchTab('aiTab', this)">
+        <span>🤖</span> المساعد الذكي المربوط بملفات الدليل
+      </button>
+    </nav>
+
+    <div class="top-actions">
+      <button class="btn-icon" id="soundToggleBtn" onclick="toggleSound()">
+        <span id="soundIcon">🔊</span> <span id="soundLabel">الأصوات مفعّلة</span>
+      </button>
+      <button class="btn-icon" id="themeToggleBtn" onclick="toggleTheme()">
+        <span id="themeIcon">☀️</span> <span id="themeLabel">الوضع النهاري</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- =========================================================
+         TAB 1: HANDS-ON TACTILE & 3D ASSEMBLY LAB
+    ========================================================== -->
+    <section id="labTab" class="tab-panel active">
+      <!-- Lab Toolbar -->
+      <div class="glass-card lab-toolbar">
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:0.7rem;">
+          <div class="mode-switch">
+            <button class="mode-btn active" id="guidedModeBtn" onclick="setLabMode('guided')">🎓 التدريب الموجّه</button>
+            <button class="mode-btn exam" id="examModeBtn" onclick="setLabMode('exam')">⏱️ الاختبار العملي (30ث)</button>
+          </div>
+
+          <div class="exam-hud" id="examHud">
+            <span>الوقت: <span class="timer-badge" id="examTimer">30s</span></span>
+            <span>النتيجة: <span id="examScore">100</span>%</span>
+          </div>
+        </div>
+
+        <div class="step-pills" id="stepPills"></div>
+
+        <button class="btn-icon" onclick="resetLab()">🔄 إعادة الطاولة</button>
+      </div>
+
+      <!-- 3-COLUMN WORKSPACE -->
+      <div class="workspace-grid">
+
+        <!-- LEFT COLUMN: VERTICAL TOOL SHELF -->
+        <aside class="glass-card workspace-col">
+          <div class="col-header">
+            <span>🧰 رف الأدوات الطبية</span>
+            <span class="badge-count">7 أدوات</span>
+          </div>
+          <p style="font-size:0.74rem; color:var(--text-secondary);">
+            اختر الأداة من الرف لإحضارها إلى طاولة العمل ثم حرّكها بيدك مباشرة.
+          </p>
+          <div class="tool-list" id="toolShelfList"></div>
+        </aside>
+
+        <!-- CENTER COLUMN: HANDS-ON TACTILE SIMULATION BENCH -->
+        <section class="glass-card workspace-col">
+          <div class="bench-header">
+            <div class="col-header" style="border:none; padding:0;">
+              <span>🔬 طاولة العمل التفاعلية المباشرة</span>
+            </div>
+            <div class="view-toggle">
+              <button class="view-btn active" id="btnView2D" onclick="setWorkspaceView('2d')">طاولة الأدوات وشاشة المضخة</button>
+              <button class="view-btn" id="btnView3D" onclick="setWorkspaceView('3d')">استوديو العرض 3D (360°)</button>
+            </div>
+          </div>
+
+          <div class="stage-banner">
+            <h3 id="stageTitle">المرحلة 1 من 6: تعقيم سدادة القلم وسحب الإنسولين باليد</h3>
+            <span class="hand-cue-pill" id="handCueText">🖐️ أمسك المسحة الكحولية وافرك سدادة القلم ذهابًا وإيابًا</span>
+            <p id="stageDesc">امسح سدادة القلم/الفيال بيدك حتى تصل نسبة التعقيم إلى 100%، ثم أدخل السرنجة واسحب مكبسها لأسفل لتعبئة 250 وحدة من الإنسولين.</p>
+          </div>
+
+          <div class="coaching-alert" id="coachingAlert"></div>
+
+          <div class="sim-arena" id="simArena">
+            <!-- Hands-On SVG Workbench + Tandem Screen -->
+            <div class="bench-split" id="bench2DContainer">
+
+              <!-- Tactile SVG Manipulation Mat -->
+              <div class="tactile-mat-wrap">
+                <div class="mat-topbar">
+                  <span id="matStageLabel">منطقة التفاعل اللمسي المباشر (اسحب وحرّك بيدك)</span>
+                  <span id="matMetricBadge" style="color:var(--accent-cyan);">التعقيم: 0%</span>
+                </div>
+
+                <div class="tactile-svg-box" id="tactileSvgBox">
+                  <svg id="tactileSvg" viewBox="0 0 560 365" preserveAspectRatio="xMidYMid meet"></svg>
+                </div>
+
+                <div class="mat-footer-bar">
+                  <span class="progress-chip" id="matHintChip">💡 نصيحة: المس واسحب الأدوات مباشرة داخل الإطار</span>
+                  <div id="matExtraBtns" style="display:flex; gap:0.4rem;"></div>
+                </div>
+              </div>
+
+              <!-- Realistic Tandem t:slim X2 Hardware Simulator -->
+              <div class="pump-panel-wrap">
+                <div style="text-align:center; font-size:0.74rem; font-weight:800; color:var(--text-secondary); margin-bottom:0.4rem;">
+                  شاشة مضخة Tandem t:slim X2 الحية
+                </div>
+                <div class="tandem-device">
+                  <div class="pump-top-bar">
+                    <span style="font-size:0.64rem; color:#94a3b8; font-weight:700;">t:slim X2</span>
+                    <div class="pump-led" id="pumpLed"></div>
+                    <span style="font-size:0.64rem; color:#38bdf8; font-weight:800;">Control-IQ</span>
+                  </div>
+                  <div class="pump-screen" id="pumpScreen"></div>
+                  <div class="pump-t-btn" onclick="pumpWakeButton()" title="زر التشغيل/الشاشة (1-2-3)">t</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- 360° Interactive 3D Canvas Studio -->
+            <div id="studio3dContainer">
+              <canvas id="pump3dCanvas" width="620" height="340"></canvas>
+              <div class="action-row">
+                <button class="btn-action secondary" onclick="rotate3DTo('front')">الواجهة الأمامية (الشاشة)</button>
+                <button class="btn-action secondary" onclick="rotate3DTo('back')">الواجهة الخلفية (6 فتحات تهوية)</button>
+                <button class="btn-action secondary" onclick="rotate3DTo('side')">منفذ الخزان و USB</button>
+                <button class="btn-action" onclick="toggle3DCartridge()">تركيب / فصل الخزان 3D</button>
+              </div>
+              <p style="font-size:0.75rem; color:var(--text-secondary);">
+                اسحب بإصبعك أو الماوس لتدوير المضخة 360° — لاحظ فتحات التهوية الست الخلفية وحلقة LED العلوية ومنفذ انزلاق الخزان.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- RIGHT COLUMN: READY TOOLS DOCK -->
+        <aside class="glass-card workspace-col">
+          <div class="col-header">
+            <span>✅ الأدوات المنجزة</span>
+            <span class="badge-count" id="readyCount">0 / 6</span>
+          </div>
+          <p style="font-size:0.74rem; color:var(--text-secondary);">
+            كل أداة تُنهي استخدامها بيدك تنتقل تلقائيًا إلى قائمة الجاهزية.
+          </p>
+          <div class="ready-dock" id="readyDockList">
+            <div style="text-align:center; padding:1.4rem 0.5rem; color:var(--text-muted); font-size:0.78rem; border:1px dashed var(--border-subtle); border-radius:12px;">
+              ابدأ بمسح سدادة القلم بيدك بالمسحة الكحولية.
+            </div>
+          </div>
+
+          <div class="telemetry-box">
+            <div style="font-weight:800; color:var(--accent-cyan); margin-bottom:0.3rem;">📊 القياسات السريرية الحية</div>
+            <div class="telemetry-row">
+              <span>تعقيم السدادة:</span>
+              <strong id="telSwab">0%</strong>
+            </div>
+            <div class="telemetry-row">
+              <span>كمية الإنسولين:</span>
+              <strong id="telInsulin">0 وحدة</strong>
+            </div>
+            <div class="telemetry-row">
+              <span>فقاعات الهواء:</span>
+              <strong id="telBubbles">غير مفحوص</strong>
+            </div>
+            <div class="telemetry-row">
+              <span>عمق إبرة الخزان:</span>
+              <strong id="telNeedle">—</strong>
+            </div>
+            <div class="telemetry-row">
+              <span>تعبئة الأنبوب:</span>
+              <strong id="telTubing">0.0 وحدة</strong>
+            </div>
+            <div class="telemetry-row">
+              <span>تعبئة الكانيولا:</span>
+              <strong id="telCannula">غير مكتمل</strong>
+            </div>
+            <div class="telemetry-row">
+              <span>ضخ الإنسولين:</span>
+              <strong id="telDelivery" style="color:var(--accent-amber);">متوقف</strong>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         TAB 2: COMPREHENSIVE OFFICIAL GUIDE & SYMBOLS
+    ========================================================== -->
+    <section id="guideTab" class="tab-panel">
+      <div class="glass-card" style="margin-bottom:1rem;">
+        <h2 style="font-size:1.12rem; font-weight:800; margin-bottom:0.25rem;">📘 الدليل الشامل والرموز الرسمية المعتمدة</h2>
+        <p style="font-size:0.83rem; color:var(--text-secondary); margin-bottom:0.85rem;">
+          المرجع الكامل لتقنية Control-IQ 7.8.1، رموز حساس Dexcom G7، المواصفات الفنية، جدول التنبيهات والإنذارات (0A–26A)، وقواعد السفر والطوارئ.
+        </p>
+
+        <div class="guide-controls">
+          <input type="text" class="search-input" id="guideSearchInput" placeholder="ابحث برمز التنبيه (مثل 2A أو 16A) أو كلمة (IP27، السفر، نوفورابيد، الكيتونات)..." oninput="filterGuide()" />
+          <div class="filter-pills">
+            <button class="filter-pill active" onclick="setGuideFilter('all', this)">الكل</button>
+            <button class="filter-pill" onclick="setGuideFilter('ciq', this)">Control-IQ 7.8.1</button>
+            <button class="filter-pill" onclick="setGuideFilter('g7', this)">حساس Dexcom G7</button>
+            <button class="filter-pill" onclick="setGuideFilter('specs', this)">المواصفات والسلامة</button>
+            <button class="filter-pill" onclick="setGuideFilter('alerts', this)">التنبيهات 0A–26A</button>
+            <button class="filter-pill" onclick="setGuideFilter('travel', this)">الطوارئ والسفر</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-grid" id="guideCardsGrid"></div>
+
+      <div class="glass-card guide-section" data-cat="g7" style="margin-bottom:1rem;">
+        <h3 style="font-size:0.98rem; font-weight:800; color:var(--accent-cyan); margin-bottom:0.35rem;">
+          📈 أسهم اتجاه سكر الدم السبعة لحساس Dexcom G7
+        </h3>
+        <div class="arrows-strip">
+          <div class="arrow-box">
+            <div class="arrow-glyph" style="color:#f43f5e;">↑↑</div>
+            <strong>ارتفاع سريع جدًا</strong>
+            <p style="font-size:0.74rem; color:var(--text-secondary);">أكثر من 3 ملغ/دل/دقيقة (> 90 ملغ/دل خلال 30 دقيقة)</p>
+          </div>
+          <div class="arrow-box">
+            <div class="arrow-glyph" style="color:#f59e0b;">↑</div>
+            <strong>ارتفاع سريع</strong>
+            <p style="font-size:0.74rem; color:var(--text-secondary);">2 – 3 ملغ/دل/دقيقة (60 – 90 ملغ/دل خلال 30 دقيقة)</p>
+          </div>
+          <div class="arrow-box">
+            <div class="arrow-glyph" style="color:#fbbf24;">↗</div>
+            <strong>ارتفاع تدريجي</strong>
+            <p style="font-size:0.74rem; color:var(--text-secondary);">1 – 2 ملغ/دل/دقيقة (30 – 60 ملغ/دل خلال 30 دقيقة)</p>
+          </div>
+          <div class="arrow-box">
+            <div class="arrow-glyph" style="color:#10b981;">→</div>
+            <strong>مستقر (ثابت)</strong>
+            <p style="font-size:0.74rem; color:var(--text-secondary);">تغيّر أقل من 1 ملغ/دل/دقيقة (< 30 ملغ/دل خلال 30 دقيقة)</p>
+          </div>
+          <div class="arrow-box">
+            <div class="arrow-glyph" style="color:#38bdf8;">↘</div>
+            <strong>انخفاض تدريجي</strong>
+            <p style="font-size:0.74rem; color:var(--text-secondary);">ينخفض بمعدل 1 – 2 ملغ/دل/دقيقة (30 – 60 ملغ/دل خلال 30 دقيقة)</p>
+          </div>
+          <div class="arrow-box">
+            <div class="arrow-glyph" style="color:#f59e0b;">↓</div>
+            <strong>انخفاض سريع</strong>
+            <p style="font-size:0.74rem; color:var(--text-secondary);">ينخفض بمعدل 2 – 3 ملغ/دل/دقيقة (60 – 90 ملغ/دل خلال 30 دقيقة)</p>
+          </div>
+          <div class="arrow-box">
+            <div class="arrow-glyph" style="color:#f43f5e;">↓↓</div>
+            <strong>انخفاض سريع جدًا</strong>
+            <p style="font-size:0.74rem; color:var(--text-secondary);">ينخفض بأكثر من 3 ملغ/دل/دقيقة (> 90 ملغ/دل خلال 30 دقيقة)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-grid guide-section" data-cat="travel" style="margin-bottom:1rem;">
+        <div class="symbol-card" style="border-color: rgba(245, 158, 11, 0.45);">
+          <div class="symbol-header">
+            <div class="symbol-svg-wrap" style="font-size:1.45rem;">⏳</div>
+            <div>
+              <h3>القاعدة الذهبية للساعتين (Golden 2-Hour Rule)</h3>
+              <span class="symbol-tag" style="background:rgba(245,158,11,0.18); color:var(--accent-amber);">بروتوكول ارتفاع السكر الحاد</span>
+            </div>
+          </div>
+          <p>
+            إذا ارتفع سكر الدم فوق <strong>250 ملغ/دل (13.9 مليمول/لتر)</strong> ولم ينخفض خلال <strong>ساعتين</strong> من إعطاء جرعة تصحيحية عبر المضخة:
+          </p>
+          <ul style="padding-right:1.1rem; font-size:0.81rem; color:var(--text-secondary); display:flex; flex-direction:column; gap:0.28rem;">
+            <li>افحص الكيتونات في الدم أو البول فورًا.</li>
+            <li>افترض وجود انسداد في الكانيولا أو تلف في الإنسولين داخل الخزان.</li>
+            <li>أعطِ الجرعة التصحيحية باستخدام <strong>قلم الإنسولين الخارجي</strong> وليس المضخة.</li>
+            <li>استبدل الخزان وطقم التسريب بالكامل في موقع حقن جديد.</li>
+          </ul>
+        </div>
+
+        <div class="symbol-card" style="border-color: rgba(14, 165, 233, 0.45);">
+          <div class="symbol-header">
+            <div class="symbol-svg-wrap" style="font-size:1.45rem;">✈️</div>
+            <div>
+              <h3>قواعد السفر والمطارات والأشعة الطبية</h3>
+              <span class="symbol-tag">سلامة الأجهزة الطبية</span>
+            </div>
+          </div>
+          <ul style="padding-right:1.1rem; font-size:0.81rem; color:var(--text-secondary); display:flex; flex-direction:column; gap:0.32rem;">
+            <li><strong>بوابات كشف المعادن بالمطار:</strong> آمنة للمضخة وحساس Dexcom G7.</li>
+            <li><strong>ممنوع منعًا باتًا:</strong> تمرير المضخة أو الحساس عبر جهاز الأشعة السينية للحقائب (X-Ray) أو الماسح الضوئي لكامل الجسم (Full-Body Scanner).</li>
+            <li><strong>الأشعة السريرية (MRI / CT / X-Ray):</strong> المضخة تحمل تصنيف <strong>MR Unsafe</strong>؛ يجب فصلها وتركها خارج غرفة الأشعة تمامًا.</li>
+            <li>احتفظ دائمًا بأقلام إنسولين احتياطية وإبر وشرائط فحص في حقيبة اليد.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="glass-card guide-section" data-cat="alerts" style="margin-bottom:1rem;">
+        <h3 style="font-size:0.98rem; font-weight:800; color:var(--accent-rose); margin-bottom:0.25rem;">
+          🚨 جدول رموز التنبيهات والإنذارات الكامل (0A – 26A)
+        </h3>
+        <div class="table-wrap">
+          <table id="alertsTable">
+            <thead>
+              <tr>
+                <th>الرمز</th>
+                <th>اسم التنبيه / الإنذار</th>
+                <th>السبب السريري / الفني</th>
+                <th>الإجراء الفوري المطلوب</th>
+              </tr>
+            </thead>
+            <tbody id="alertsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="glass-card guide-section" data-cat="travel">
+        <h3 style="font-size:0.98rem; font-weight:800; color:var(--accent-emerald); margin-bottom:0.25rem;">
+          📞 أرقام الطوارئ والدعم الفني المعتمدة في المملكة العربية السعودية
+        </h3>
+        <div class="contacts-grid">
+          <div class="contact-card">
+            <div>
+              <strong>الهلال الأحمر السعودي (الطوارئ الطبية)</strong>
+              <p style="font-size:0.76rem; color:var(--text-secondary);">حالات الحماض الكيتوني (DKA) أو فقدان الوعي</p>
+            </div>
+            <div class="contact-num">997</div>
+          </div>
+          <div class="contact-card">
+            <div>
+              <strong>الدعم الفني الموحد (VitalAire / Tandem)</strong>
+              <p style="font-size:0.76rem; color:var(--text-secondary);">الأعطال التقنية للمضخة واستبدال الأجهزة</p>
+            </div>
+            <div class="contact-num">920023202</div>
+          </div>
+          <div class="contact-card">
+            <div>
+              <strong>خط التواصل السريري والتثقيف الصحي</strong>
+              <p style="font-size:0.76rem; color:var(--text-secondary);">الاستفسارات السريرية ومتابعة المضخة</p>
+            </div>
+            <div class="contact-num">0556657474</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         TAB 3: AI KNOWLEDGE-BASE ASSISTANT
+    ========================================================== -->
+    <section id="aiTab" class="tab-panel">
+      <div class="ai-layout">
+        <aside class="glass-card kb-sidebar">
+          <div>
+            <h3 style="font-size:0.96rem; font-weight:800; color:var(--accent-cyan);">📚 قاعدة المعرفة المعتمدة</h3>
+            <p style="font-size:0.76rem; color:var(--text-secondary); margin-top:0.2rem;">
+              المساعد مربوط تلقائيًا بدليل Tandem Control-IQ 7.8.1 وكتيبات MNGHA / VitalAire، ويمكنك إرفاق ملفات إضافية هنا.
+            </p>
+          </div>
+
+          <label class="file-drop" for="kbFileInput">
+            <div style="font-size:1.45rem; margin-bottom:0.2rem;">📎</div>
+            <strong style="font-size:0.82rem; display:block;">إرفاق ملفات الدليل أو البروتوكول</strong>
+            <span style="font-size:0.72rem; color:var(--text-secondary);">يدعم PDF, TXT, MD, CSV, JSON</span>
+            <input type="file" id="kbFileInput" multiple accept=".txt,.md,.json,.csv,.pdf" style="display:none;" onchange="handleKbUpload(event)" />
+          </label>
+
+          <div>
+            <div style="font-size:0.78rem; font-weight:800; margin-bottom:0.35rem;">الملفات النشطة في الذاكرة:</div>
+            <div class="kb-doc-list" id="kbDocList"></div>
+          </div>
+
+          <div style="border-top:1px solid var(--border-subtle); padding-top:0.65rem;">
+            <label style="font-size:0.74rem; font-weight:700; color:var(--text-secondary); display:block; margin-bottom:0.28rem;">
+              مفتاح Gemini API (اختياري — يعمل المساعد بدونه محليًا بدقة عالية):
+            </label>
+            <input type="password" id="geminiApiKey" class="chat-input" style="width:100%; font-size:0.76rem;" placeholder="AIzaSy..." />
+          </div>
+        </aside>
+
+        <section class="glass-card chat-box">
+          <div class="col-header" style="margin-bottom:0.45rem;">
+            <span>🩺 المساعد السريري الذكي لمضخة Tandem t:slim X2</span>
+            <span class="badge-count">متصل بقاعدة البيانات</span>
+          </div>
+
+          <div class="chat-messages" id="chatMessages">
+            <div class="msg bot">
+              مرحبًا بك! أنا المساعد السريري المربوط بدليل استخدام مضخة <strong>Tandem t:slim X2 (Control-IQ 7.8.1)</strong> وحساس <strong>Dexcom G7</strong>.<br><br>
+              اسألني عن خطوات تغيير الخزان، تفسير تنبيهات <strong>0A–26A</strong>، القاعدة الذهبية للساعتين، أو إجراءات السفر والأشعة.
+            </div>
+          </div>
+
+          <div class="quick-chips">
+            <button class="chip" onclick="askQuick('ما هي القاعدة الذهبية للساعتين عند ارتفاع السكر؟')">⏳ القاعدة الذهبية للساعتين</button>
+            <button class="chip" onclick="askQuick('كيف أتعامل مع تنبيه انسداد 2A Occlusion؟')">🚨 حل تنبيه انسداد 2A</button>
+            <button class="chip" onclick="askQuick('ما الفرق بين مدة تغيير إنسولين NovoRapid و Humalog؟')">💉 NovoRapid vs Humalog</button>
+            <button class="chip" onclick="askQuick('ما هي قواعد المطار والأشعة MRI للمضخة؟')">✈️ السفر والأشعة MRI</button>
+            <button class="chip" onclick="askQuick('لماذا يجب إبقاء جزء بسيط من الإبرة الفضية ظاهرًا عند تعبئة الخزان؟')">🎯 تقنية تعبئة الخزان</button>
+          </div>
+
+          <form class="chat-input-row" onsubmit="event.preventDefault(); sendChatMessage();">
+            <input type="text" id="chatInput" class="chat-input" placeholder="اكتب سؤالك الطبي أو التقني حول المضخة هنا..." />
+            <button type="submit" class="btn-action">إرسال ◀</button>
+          </form>
+        </section>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    /* =========================================================
+       SOUND ENGINE (SYNTHESIZED TACTILE FEEDBACK - ZERO EXTERNAL FILES)
+    ========================================================= */
+    let soundEnabled = true;
+    let audioCtx = null;
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      document.getElementById('soundIcon').textContent = soundEnabled ? '🔊' : '🔇';
+      document.getElementById('soundLabel').textContent = soundEnabled ? 'الأصوات مفعّلة' : 'صامت';
+    }
+
+    function playSound(type) {
+      if (!soundEnabled) return;
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        if (type === 'click') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(620, now);
+          osc.frequency.exponentialRampToValueAtTime(180, now + 0.06);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
+          osc.start(now);
+          osc.stop(now + 0.07);
+        } else if (type === 'pop') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(420, now);
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.08);
+          gain.gain.setValueAtTime(0.15, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+          osc.start(now);
+          osc.stop(now + 0.08);
+        } else if (type === 'rub') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(240 + Math.random() * 80, now);
+          gain.gain.setValueAtTime(0.05, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+          osc.start(now);
+          osc.stop(now + 0.05);
+        } else if (type === 'success') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(523.25, now);
+          osc.frequency.setValueAtTime(659.25, now + 0.09);
+          osc.frequency.setValueAtTime(783.99, now + 0.18);
+          gain.gain.setValueAtTime(0.15, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
+          osc.start(now);
+          osc.stop(now + 0.32);
+        } else if (type === 'warn') {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(220, now);
+          osc.frequency.linearRampToValueAtTime(160, now + 0.22);
+          gain.gain.setValueAtTime(0.14, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.24);
+          osc.start(now);
+          osc.stop(now + 0.24);
+        }
+      } catch (e) {}
+    }
+
+    /* =========================================================
+       THEME & NAVIGATION
+    ========================================================= */
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      document.getElementById('themeIcon').textContent = isDark ? '🌙' : '☀️';
+      document.getElementById('themeLabel').textContent = isDark ? 'الوضع الليلي' : 'الوضع النهاري';
+    }
+
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      btn.classList.add('active');
+      if (tabId === 'labTab') {
+        renderTactileMat();
+        draw3DPump();
+      }
+    }
+
+    /* =========================================================
+       TAB 1: HANDS-ON TACTILE SIMULATION ENGINE
+    ========================================================= */
+    const TOOLS = [
+      { id: 'swab', name: 'مسحة كحولية معقمة', sub: 'اسحبها وامسح بها السدادة والجلد', icon: '🧴' },
+      { id: 'pen', name: 'فيال/قلم الإنسولين U-100', sub: 'NovoRapid / Humalog (حرارة الغرفة)', icon: '🧪' },
+      { id: 'syringe', name: 'سرنجة التعبئة 3.0 مل', sub: 'اسحب مكبسها لأسفل وأعلى بيدك', icon: '💉' },
+      { id: 'cartridge', name: 'خزان تاندم t:slim X2', sub: 'املأه ثم اسحبه داخل المضخة', icon: '🔋' },
+      { id: 'pump', name: 'مضخة Tandem t:slim X2', sub: 'افتح القفل 1-2-3 وشغّل الضخ', icon: '📱' },
+      { id: 'infusion', name: 'طقم التسريب t:lock', sub: 'اربطه وأدره + أدخل الكانيولا', icon: '➰' }
+    ];
+
+    const STAGES = [
+      {
+        title: 'المرحلة 1 من 6: تعقيم السدادة وسحب الإنسولين باليد',
+        cue: '🖐️ أمسك المسحة الكحولية وافرك سدادة الفيال ذهابًا وإيابًا',
+        desc: '1) اسحب المسحة الكحولية فوق سدادة فيال الإنسولين وافركها حتى تصل إلى 100%. 2) اسحب السرنجة داخل السدادة ثم اسحب مكبس السرنجة لأسفل بيدك لتعبئة 250 وحدة.',
+        hint: '💡 المس واسحب المسحة الكحولية فوق رأس الفيال لتعقيمها'
+      },
+      {
+        title: 'المرحلة 2 من 6: نقر السرنجة وطرد فقاعات الهواء باليد',
+        cue: '👆 انقر جسم السرنجة لطرد الفقاعات ثم ادفع المكبس لأعلى',
+        desc: '1) انقر بإصبعك/الماوس على جسم السرنجة الزجاجي حتى تصعد الفقاعات للأعلى. 2) اسحب مكبس السرنجة للأعلى لطرد الهواء خارج الإبرة.',
+        hint: '💡 انقر على جسم السرنجة 3 مرات لتجميع الفقاعات في القمة'
+      },
+      {
+        title: 'المرحلة 3 من 6: تعبئة خزان تاندم (مقاومة الإبرة الحقيقية)',
+        cue: '💉 اسحب السرنجة لأسفل داخل المنفذ الأبيض وتوقف عند المنطقة الخضراء',
+        desc: '1) اسحب السرنجة لأسفل لإدخال الإبرة في المنفذ الأبيض وتوقف ليبقى ~3-4 مم من الإبرة الفضية ظاهرًا. 2) اسحب المكبس لأعلى لتفريغ الهواء، ثم ادفعه لأسفل لحقن الإنسولين.',
+        hint: '💡 لا تدفع الإبرة بالكامل — توقف في المنطقة الخضراء!'
+      },
+      {
+        title: 'المرحلة 4 من 6: فتح قفل المضخة (1-2-3) وتثبيت الخزان باليد',
+        cue: '🔋 افتح شاشة المضخة (1-2-3) ثم اسحب الخزان المملوء لتركيبه في المضخة',
+        desc: '1) اضغط زر (t) على شاشة المضخة وأدخل 1-2-3 ثم Options ← Load ← Change Cartridge. 2) اسحب الخزان المملوء بيدك وأدخله في مسار المضخة حتى تسمع طقة التثبيت.',
+        hint: '💡 اسحب الخزان الأزرق لليسار داخل مسار مضخة Tandem'
+      },
+      {
+        title: 'المرحلة 5 من 6: ربط t:lock وتدويره + تعبئة الأنبوب (Fill Tubing)',
+        cue: '➰ اسحب موصل t:lock للخزان وأدر الحلقة باتجاه عقارب الساعة',
+        desc: '1) اسحب موصل t:lock إلى منفذ الخزان. 2) أدر الحلقة الذهبية باتجاه عقارب الساعة حتى تقفل. 3) اضغط Fill Tubing على شاشة المضخة حتى خروج 3 قطرات.',
+        hint: '💡 اسحب t:lock نحو الخزان ثم أدره حتى تسمع طقة القفل'
+      },
+      {
+        title: 'المرحلة 6 من 6: اختيار الموقع، التعقيم، وإدخال الكانيولا باليد',
+        cue: '📍 اختر موقعًا جديدًا، عقّمه بالمسحة الكحولية، ثم اسحب الكانيولا للجلد',
+        desc: '1) اختر موقع حقن جديد بعيدًا عن الموقع السابق. 2) افركه بالمسحة الكحولية. 3) اسحب أداة إدخال الكانيولا إلى الموقع المعقّم ثم اضغط Resume Insulin على المضخة.',
+        hint: '💡 تجنب الموقع السابق (البرتقالي) واختر موقعًا أخضر متاحًا'
+      }
+    ];
+
+    let labState = {
+      mode: 'guided',
+      stage: 0,
+      score: 100,
+      timeLeft: 30,
+      timerInterval: null,
+      // Tactile coordinates & progress
+      swabX: 90, swabY: 120,
+      swabProgress: 0, // 0..100
+      lastSwabX: null,
+      syringeX: 430, syringeY: 165,
+      syringeInsertedInVial: false,
+      plungerPull: 0, // 0..100 (100 = 250 units drawn)
+      bubblesTaps: 0,
+      bubblesExpelled: false,
+      // Stage 3 cartridge fill
+      cartNeedleDepth: 15, // target 70..86
+      cartVacuumPulled: false,
+      cartFillProgress: 0, // 0..100
+      // Stage 4 cartridge slide
+      cartSlideX: 390,
+      cartridgeLoaded3D: false,
+      // Stage 5 t:lock
+      tlockX: 395,
+      tlockConnected: false,
+      tlockTurnAngle: 0, // target >= 90
+      tubingPrimedUnits: 0,
+      // Stage 6 site + cannula
+      selectedSite: '',
+      siteX: 0, siteY: 0,
+      siteSwabProgress: 0,
+      cannulaX: 430, cannulaY: 130,
+      cannulaInserted: false,
+      cannulaFilled: false,
+      insulinResumed: false,
+      // Pump screen
+      pumpScreenState: 'locked',
+      pinEntered: '',
+      readyItems: []
+    };
+
+    // Active drag state for SVG pointer manipulation
+    let activeDrag = null;
+
+    function selectToolFromShelf(toolId) {
+      playSound('click');
+      const s = labState.stage;
+      if (toolId === 'swab' && (s === 0 || s === 5)) {
+        showCoachingAlert('🧴 المسحة الكحولية جاهزة! امسكها داخل طاولة العمل وافرك بها ذهابًا وإيابًا.', true);
+      } else if (toolId === 'syringe' && (s === 0 || s === 1 || s === 2)) {
+        showCoachingAlert('💉 السرنجة جاهزة على الطاولة! اسحبها أو حرّك مكبسها بيدك.', true);
+      } else if (toolId === 'cartridge' && (s === 2 || s === 3)) {
+        showCoachingAlert('🔋 خزان تاندم جاهز على الطاولة! اسحبه أو املأه بيدك.', true);
+      } else if (toolId === 'pump' && s === 3) {
+        pumpWakeButton();
+      } else if (toolId === 'infusion' && (s === 4 || s === 5)) {
+        showCoachingAlert('➰ طقم التسريب t:lock جاهز على الطاولة! اسحبه واربطه بيدك.', true);
+      } else {
+        showCoachingAlert(`ℹ️ هذه الأداة تُستخدم في مرحلة أخرى. اتبع مؤشر اليد الأخضر في أعلى الطاولة.`, false);
+      }
+      renderToolShelf();
+    }
+
+    function renderToolShelf() {
+      const list = document.getElementById('toolShelfList');
+      list.innerHTML = TOOLS.map(t => {
+        const done = labState.readyItems.includes(t.id);
+        return `
+          <div class="tool-item ${done ? 'used' : ''}" onclick="selectToolFromShelf('${t.id}')">
+            <div class="tool-icon-box" style="font-size:1.3rem;">${t.icon}</div>
+            <div class="tool-meta">
+              <h4>${t.name} ${done ? '✓' : ''}</h4>
+              <span>${t.sub}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderStepPills() {
+      const wrap = document.getElementById('stepPills');
+      wrap.innerHTML = STAGES.map((s, idx) => {
+        let cls = 'step-pill';
+        if (idx < labState.stage) cls += ' done';
+        else if (idx === labState.stage) cls += ' current';
+        return `<button class="${cls}" onclick="jumpToStage(${idx})">المرحلة ${idx + 1}</button>`;
+      }).join('');
+    }
+
+    function jumpToStage(idx) {
+      if (labState.mode === 'exam' && idx > labState.stage) {
+        penalizeExam('⚠️ في وضع الاختبار العملي يجب إتمام المراحل بالترتيب السريري الصحيح!', 5);
+        return;
+      }
+      labState.stage = idx;
+      if (labState.mode === 'exam') resetExamTimer();
+      updateLabUI();
+    }
+
+    function setLabMode(mode) {
+      labState.mode = mode;
+      document.getElementById('guidedModeBtn').classList.toggle('active', mode === 'guided');
+      document.getElementById('examModeBtn').classList.toggle('active', mode === 'exam');
+      const hud = document.getElementById('examHud');
+      if (mode === 'exam') {
+        hud.classList.add('visible');
+        labState.score = 100;
+        document.getElementById('examScore').textContent = labState.score;
+        resetExamTimer();
+        showCoachingAlert('⏱️ بدأ الاختبار العملي! نفّذ الخطوات بيدك خلال 30 ثانية لكل مرحلة.', true);
+      } else {
+        hud.classList.remove('visible');
+        clearInterval(labState.timerInterval);
+        hideCoachingAlert();
+      }
+      updateLabUI();
+    }
+
+    function resetExamTimer() {
+      clearInterval(labState.timerInterval);
+      labState.timeLeft = 30;
+      document.getElementById('examTimer').textContent = '30s';
+      labState.timerInterval = setInterval(() => {
+        labState.timeLeft--;
+        document.getElementById('examTimer').textContent = labState.timeLeft + 's';
+        if (labState.timeLeft <= 0) {
+          clearInterval(labState.timerInterval);
+          penalizeExam('⏰ انتهى وقت المرحلة (30 ثانية)! استمر لإتمام الإجراء بدقة.', 10);
+          resetExamTimer();
+        }
+      }, 1000);
+    }
+
+    function penalizeExam(msg, pts = 10) {
+      playSound('warn');
+      if (labState.mode === 'exam') {
+        labState.score = Math.max(0, labState.score - pts);
+        document.getElementById('examScore').textContent = labState.score;
+      }
+      showCoachingAlert(msg, false);
+    }
+
+    function showCoachingAlert(msg, isSuccess = false) {
+      const el = document.getElementById('coachingAlert');
+      el.textContent = msg;
+      el.className = 'coaching-alert visible' + (isSuccess ? ' success' : '');
+    }
+
+    function hideCoachingAlert() {
+      document.getElementById('coachingAlert').className = 'coaching-alert';
+    }
+
+    function addReadyItem(id, label) {
+      if (!labState.readyItems.includes(id)) {
+        labState.readyItems.push(id);
+      }
+      const dock = document.getElementById('readyDockList');
+      document.getElementById('readyCount').textContent = `${labState.readyItems.length} / 6`;
+      const existing = document.getElementById('ready-' + id);
+      if (existing) {
+        existing.querySelector('span').textContent = label;
+        return;
+      }
+      if (labState.readyItems.length === 1) dock.innerHTML = '';
+      const div = document.createElement('div');
+      div.className = 'ready-item';
+      div.id = 'ready-' + id;
+      div.innerHTML = `<span>${label}</span><strong style="color:var(--accent-emerald);">جاهز ✓</strong>`;
+      dock.appendChild(div);
+      renderToolShelf();
+    }
+
+    function advanceStage(nextIdx) {
+      playSound('success');
+      labState.stage = nextIdx;
+      if (labState.mode === 'exam') resetExamTimer();
+      updateLabUI();
+    }
+
+    /* =========================================================
+       HANDS-ON SVG TACTILE RENDERER & DIRECT POINTER PHYSICS
+    ========================================================= */
+    function getSvgPoint(evt) {
+      const svg = document.getElementById('tactileSvg');
+      const rect = svg.getBoundingClientRect();
+      const x = ((evt.clientX - rect.left) / rect.width) * 560;
+      const y = ((evt.clientY - rect.top) / rect.height) * 365;
+      return { x: Math.max(20, Math.min(540, x)), y: Math.max(20, Math.min(345, y)) };
+    }
+
+    function startDrag(type, evt) {
+      evt.preventDefault();
+      evt.stopPropagation();
+      const pt = getSvgPoint(evt);
+      activeDrag = { type, startX: pt.x, startY: pt.y, origVal: 0 };
+      if (type === 'plungerDraw') activeDrag.origVal = labState.plungerPull;
+      if (type === 'needleDepth') activeDrag.origVal = labState.cartNeedleDepth;
+      if (type === 'cartFill') activeDrag.origVal = labState.cartFillProgress;
+      if (type === 'tlockRotate') activeDrag.origVal = labState.tlockTurnAngle;
+    }
+
+    function initTactilePointerListeners() {
+      const box = document.getElementById('tactileSvgBox');
+      box.addEventListener('pointermove', evt => {
+        if (!activeDrag) return;
+        evt.preventDefault();
+        const pt = getSvgPoint(evt);
+        const s = labState.stage;
+
+        // STAGE 1: Alcohol Swab Rubbing & Syringe Insertion + Plunger Pull
+        if (s === 0) {
+          if (activeDrag.type === 'swab') {
+            labState.swabX = pt.x;
+            labState.swabY = pt.y;
+            // Check proximity to vial rubber stopper at (270, 145)
+            const dist = Math.hypot(pt.x - 270, pt.y - 145);
+            if (dist < 62 && labState.swabProgress < 100) {
+              if (labState.lastSwabX !== null && Math.abs(pt.x - labState.lastSwabX) > 3) {
+                labState.swabProgress = Math.min(100, labState.swabProgress + 6);
+                playSound('rub');
+                document.getElementById('telSwab').textContent = labState.swabProgress + '%';
+                if (labState.swabProgress >= 100) {
+                  addReadyItem('swab', '🧴 سدادة الإنسولين معقّمة (100%)');
+                  addReadyItem('pen', '🧪 فيال إنسولين U-100 (22°C)');
+                  showCoachingAlert('✅ ممتاز! تم تعقيم السدادة بالكامل. اسحب الآن السرنجة إلى رأس الفيال ثم اسحب مكبسها لأسفل!', true);
+                }
+              }
+            }
+            labState.lastSwabX = pt.x;
+            renderTactileMat();
+          } else if (activeDrag.type === 'syringeMove') {
+            if (labState.swabProgress < 100) {
+              penalizeExam('🚨 تنبيه سريري: عقّم سدادة الفيال بالمسحة الكحولية (100%) قبل لمسها بالإبرة!', 10);
+              activeDrag = null;
+              return;
+            }
+            labState.syringeX = pt.x;
+            labState.syringeY = pt.y;
+            if (Math.hypot(pt.x - 270, pt.y - 110) < 55) {
+              labState.syringeInsertedInVial = true;
+              labState.syringeX = 270;
+              labState.syringeY = 85;
+              playSound('click');
+              activeDrag = null;
+              showCoachingAlert('💉 الإبرة داخل السدادة! الآن أمسك مقبض المكبس الأزرق واسحبه لأسفل لتعبئة 250 وحدة.', true);
+            }
+            renderTactileMat();
+          } else if (activeDrag.type === 'plungerDraw') {
+            const dy = pt.y - activeDrag.startY;
+            const nextVal = Math.max(0, Math.min(100, activeDrag.origVal + (dy / 95) * 100));
+            if (Math.floor(nextVal / 15) > Math.floor(labState.plungerPull / 15)) playSound('pop');
+            labState.plungerPull = nextVal;
+            const units = Math.round((labState.plungerPull / 100) * 250);
+            document.getElementById('telInsulin').textContent = units + ' وحدة';
+            if (labState.plungerPull >= 98) {
+              activeDrag = null;
+              addReadyItem('syringe', '💉 سرنجة مملوءة (250 وحدة)');
+              showCoachingAlert('✅ تم سحب 250 وحدة من الإنسولين! انتقلنا تلقائيًا لإزالة فقاعات الهواء.', true);
+              setTimeout(() => advanceStage(1), 500);
+            }
+            renderTactileMat();
+          }
+        }
+
+        // STAGE 2: Push Plunger Up to Expel Air Bubbles
+        else if (s === 1) {
+          if (activeDrag.type === 'plungerExpel') {
+            if (labState.bubblesTaps < 3) {
+              penalizeExam('🚨 انقر على جسم السرنجة 3 مرات أولًا لتجميع الفقاعات في القمة قبل دفع المكبس!', 10);
+              activeDrag = null;
+              return;
+            }
+            const dy = activeDrag.startY - pt.y; // dragging UP
+            if (dy > 28) {
+              labState.bubblesExpelled = true;
+              activeDrag = null;
+              document.getElementById('telBubbles').textContent = 'خالية من الهواء ✓';
+              showCoachingAlert('✨ تم طرد الهواء بنجاح! السرنجة صافية تمامًا وجاهزة لتعبئة خزان تاندم.', true);
+              setTimeout(() => advanceStage(2), 500);
+            }
+            renderTactileMat();
+          }
+        }
+
+        // STAGE 3: Cartridge Needle Depth + Vacuum + Fill
+        else if (s === 2) {
+          if (activeDrag.type === 'needleDepth') {
+            const dy = pt.y - activeDrag.startY;
+            const nextDepth = Math.max(10, Math.min(100, activeDrag.origVal + (dy / 110) * 100));
+            labState.cartNeedleDepth = Math.round(nextDepth);
+            if (labState.cartNeedleDepth > 90) {
+              document.getElementById('telNeedle').textContent = 'عميق جدًا ⚠️';
+              penalizeExam('🚨 توقف! لا تدفع الإبرة بالكامل بالقوة — ارفعها قليلًا ليبقى جزء بسيط من الإبرة الفضية ظاهرًا (~3-4 مم)!', 10);
+              activeDrag = null;
+            } else if (labState.cartNeedleDepth >= 70 && labState.cartNeedleDepth <= 88) {
+              document.getElementById('telNeedle').textContent = 'مثالي (جزء فضي ظاهر) ✓';
+            } else {
+              document.getElementById('telNeedle').textContent = labState.cartNeedleDepth + '%';
+            }
+            renderTactileMat();
+          } else if (activeDrag.type === 'cartFill') {
+            const dy = pt.y - activeDrag.startY;
+            if (!labState.cartVacuumPulled) {
+              // User pulls UP first to evacuate air from cartridge
+              if (dy < -32) {
+                labState.cartVacuumPulled = true;
+                activeDrag = null;
+                playSound('pop');
+                showCoachingAlert('✅ تم سحب الهواء المفرّغ من الخزان! الآن اسحب المكبس لأسفل لحقن 250 وحدة داخل الخزان.', true);
+              }
+            } else {
+              // User pushes DOWN to inject insulin into cartridge
+              const nextFill = Math.max(0, Math.min(100, activeDrag.origVal + (dy / 95) * 100));
+              if (Math.floor(nextFill / 20) > Math.floor(labState.cartFillProgress / 20)) playSound('pop');
+              labState.cartFillProgress = nextFill;
+              if (labState.cartFillProgress >= 98) {
+                activeDrag = null;
+                addReadyItem('cartridge', '🔋 خزان تاندم مملوء (250u)');
+                showCoachingAlert('✅ اكتمل ملء خزان تاندم! افتح قفل المضخة (1-2-3) وثبّت الخزان.', true);
+                setTimeout(() => advanceStage(3), 550);
+              }
+            }
+            renderTactileMat();
+          }
+        }
+
+        // STAGE 4: Slide Filled Cartridge into Tandem Pump Rail
+        else if (s === 3) {
+          if (activeDrag.type === 'slideCartridge') {
+            labState.cartSlideX = Math.max(215, Math.min(430, pt.x));
+            if (labState.cartSlideX <= 235) {
+              labState.cartSlideX = 218;
+              labState.cartridgeLoaded3D = true;
+              activeDrag = null;
+              playSound('click');
+              addReadyItem('pump', '📱 خزان مثبّت في المضخة');
+              draw3DPump();
+              if (labState.pumpScreenState === 'changeCartridge') {
+                labState.pumpScreenState = 'fillTubing';
+                renderPumpScreen();
+              }
+              showCoachingAlert('🔒 طَقّة التثبيت! تم تركيب الخزان في مسار المضخة بنجاح. انتقل لربط وصلة t:lock.', true);
+              setTimeout(() => advanceStage(4), 600);
+            }
+            renderTactileMat();
+          }
+        }
+
+        // STAGE 5: Drag t:lock to Cartridge Port & Twist Clockwise
+        else if (s === 4) {
+          if (activeDrag.type === 'tlockDrag') {
+            labState.tlockX = Math.max(245, Math.min(430, pt.x));
+            if (labState.tlockX <= 262) {
+              labState.tlockX = 248;
+              labState.tlockConnected = true;
+              activeDrag = null;
+              playSound('click');
+              showCoachingAlert('🔗 تلامس الموصل! الآن اسحب الحلقة الذهبية وأدرها باتجاه عقارب الساعة (90°) حتى تقفل.', true);
+            }
+            renderTactileMat();
+          } else if (activeDrag.type === 'tlockRotate') {
+            const delta = (pt.y - activeDrag.startY) + (pt.x - activeDrag.startX);
+            labState.tlockTurnAngle = Math.max(0, Math.min(90, activeDrag.origVal + delta));
+            if (labState.tlockTurnAngle >= 88) {
+              labState.tlockTurnAngle = 90;
+              activeDrag = null;
+              playSound('click');
+              addReadyItem('infusion', '➰ موصل t:lock مقفل بإحكام');
+              showCoachingAlert('✅ تم قفل t:lock! اضغط الآن زر "ضخ وتعبئة الأنبوب" حتى ظهور 3 قطرات (10+ وحدات).', true);
+            }
+            renderTactileMat();
+          }
+        }
+
+        // STAGE 6: Swab Selected Skin Site & Drag Cannula Inserter
+        else if (s === 5) {
+          if (activeDrag.type === 'siteSwab') {
+            labState.swabX = pt.x;
+            labState.swabY = pt.y;
+            if (labState.selectedSite) {
+              const dist = Math.hypot(pt.x - labState.siteX, pt.y - labState.siteY);
+              if (dist < 48 && labState.siteSwabProgress < 100) {
+                if (labState.lastSwabX !== null && Math.abs(pt.x - labState.lastSwabX) > 3) {
+                  labState.siteSwabProgress = Math.min(100, labState.siteSwabProgress + 8);
+                  playSound('rub');
+                  if (labState.siteSwabProgress >= 100) {
+                    showCoachingAlert('✅ الجلد معقّم وجاف! اسحب الآن أداة الكانيولا (Autosoft) وضعها فوق الدائرة الخضراء.', true);
+                  }
+                }
+              }
+            }
+            labState.lastSwabX = pt.x;
+            renderTactileMat();
+          } else if (activeDrag.type === 'cannulaDrag') {
+            if (!labState.selectedSite || labState.siteSwabProgress < 100) {
+              penalizeExam('🚨 اختر موقعًا جديدًا وعقّمه بالمسحة الكحولية (100%) قبل إدخال الكانيولا!', 10);
+              activeDrag = null;
+              return;
+            }
+            labState.cannulaX = pt.x;
+            labState.cannulaY = pt.y;
+            if (Math.hypot(pt.x - labState.siteX, pt.y - labState.siteY) < 42) {
+              labState.cannulaX = labState.siteX;
+              labState.cannulaY = labState.siteY;
+              labState.cannulaInserted = true;
+              labState.cannulaFilled = true;
+              activeDrag = null;
+              playSound('click');
+              document.getElementById('telCannula').textContent = '0.5 وحدة (مثبّتة) ✓';
+              labState.pumpScreenState = 'resumePrompt';
+              renderPumpScreen();
+              showCoachingAlert('📌 تم إدخال الكانيولا وتعبئتها (0.5u)! اضغط الآن Resume Insulin على شاشة المضخة.', true);
+            }
+            renderTactileMat();
+          }
+        }
+      });
+
+      window.addEventListener('pointerup', () => {
+        activeDrag = null;
+      });
+    }
+
+    function tapSyringeStage2() {
+      if (labState.stage !== 1) return;
+      labState.bubblesTaps++;
+      playSound('pop');
+      if (labState.bubblesTaps < 3) {
+        showCoachingAlert(`🫧 نقرة (${labState.bubblesTaps}/3) — استمر بنقر جسم السرنجة لصعود الفقاعات للأعلى.`, true);
+      } else {
+        showCoachingAlert('⬆️ تجمّعت الفقاعات في الأعلى! اسحب مكبس السرنجة الأزرق للأعلى لطرد الهواء.', true);
+      }
+      renderTactileMat();
+    }
+
+    function selectBodySite(name, x, y, isPrevious) {
+      if (isPrevious) {
+        penalizeExam('🚨 هذا هو موقع الحقن السابق! يجب الابتعاد 2.5 – 5 سم لتجنب التليف الشحمي وضعف الامتصاص.', 10);
+        return;
+      }
+      playSound('click');
+      labState.selectedSite = name;
+      labState.siteX = x;
+      labState.siteY = y;
+      labState.siteSwabProgress = 0;
+      showCoachingAlert(`📍 اخترت (${name}). امسك المسحة الكحولية وافرك الدائرة الخضراء لتعقيم الجلد.`, true);
+      renderTactileMat();
+    }
+
+    function primeTubingAction() {
+      if (!labState.tlockConnected || labState.tlockTurnAngle < 88) {
+        penalizeExam('🚨 اربط موصل t:lock وأدره 90° حتى يقفل قبل تعبئة الأنبوب!', 10);
+        return;
+      }
+      playSound('pop');
+      labState.tubingPrimedUnits += 5.0;
+      document.getElementById('telTubing').textContent = labState.tubingPrimedUnits.toFixed(1) + ' وحدة';
+      if (labState.tubingPrimedUnits >= 10.0) {
+        showCoachingAlert('💧💧💧 ظهرت 3 قطرات إنسولين عند طرف الإبرة! اكتملت تعبئة الأنبوب بنجاح.', true);
+        labState.pumpScreenState = 'fillCannula';
+        renderPumpScreen();
+        setTimeout(() => advanceStage(5), 600);
+      } else {
+        showCoachingAlert(`⏳ تم ضخ ${labState.tubingPrimedUnits.toFixed(1)} وحدة — اضغط مرة أخرى حتى خروج 3 قطرات (10+ وحدات).`, true);
+      }
+      renderTactileMat();
+    }
+
+    function renderTactileMat() {
+      const svg = document.getElementById('tactileSvg');
+      const metric = document.getElementById('matMetricBadge');
+      const hint = document.getElementById('matHintChip');
+      const extraBtns = document.getElementById('matExtraBtns');
+      extraBtns.innerHTML = '';
+      const s = labState.stage;
+
+      if (s === 0) {
+        const units = Math.round((labState.plungerPull / 100) * 250);
+        metric.textContent = `التعقيم: ${labState.swabProgress}% | المسحوب: ${units}u`;
+        hint.textContent = labState.swabProgress < 100
+          ? '🖐️ اسحب المسحة البيضاء فوق سدادة الفيال وافركها يمينًا ويسارًا'
+          : (!labState.syringeInsertedInVial
+              ? '🖐️ اسحب السرنجة إلى رأس الفيال المعقّم'
+              : '🖐️ اسحب مقبض المكبس الأزرق لأسفل لتعبئة 250 وحدة');
+
+        const plungerOffset = (labState.plungerPull / 100) * 78;
+        const fluidHeight = (labState.plungerPull / 100) * 78;
+
+        svg.innerHTML = `
+          <defs>
+            <linearGradient id="vialGlass" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.28"/>
+              <stop offset="50%" stop-color="#e0f2fe" stop-opacity="0.14"/>
+              <stop offset="100%" stop-color="#0284c7" stop-opacity="0.32"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Room Temp Badge -->
+          <rect x="18" y="16" width="175" height="30" rx="8" fill="rgba(16,185,129,0.16)" stroke="#10b981"/>
+          <text x="105" y="35" fill="#10b981" font-size="12" font-weight="bold" text-anchor="middle">🌡️ حرارة الغرفة 22°C ✓</text>
+
+          <!-- Insulin Vial U-100 at center (270, 220) -->
+          <g>
+            <!-- Vial Body -->
+            <rect x="225" y="165" width="90" height="145" rx="14" fill="url(#vialGlass)" stroke="#38bdf8" stroke-width="2"/>
+            <!-- Insulin liquid inside vial -->
+            <rect x="229" y="${195 + fluidHeight * 0.45}" width="82" height="${111 - fluidHeight * 0.45}" rx="8" fill="rgba(56,189,248,0.35)"/>
+            <rect x="234" y="215" width="72" height="44" rx="6" fill="#0f172a" stroke="#334155"/>
+            <text x="270" y="234" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">NovoRapid</text>
+            <text x="270" y="250" fill="#94a3b8" font-size="10" text-anchor="middle">U-100 Insulin</text>
+            <!-- Neck & Rubber Stopper -->
+            <rect x="247" y="142" width="46" height="23" rx="4" fill="#94a3b8"/>
+            <rect x="242" y="132" width="56" height="12" rx="4" fill="${labState.swabProgress >= 100 ? '#10b981' : '#f59e0b'}"/>
+            <!-- Disinfection Ring -->
+            <circle cx="270" cy="138" r="34" fill="none" stroke="${labState.swabProgress >= 100 ? '#10b981' : '#38bdf8'}" stroke-width="2.5" stroke-dasharray="6 4"/>
+            <text x="270" y="332" fill="#94a3b8" font-size="11" font-weight="bold" text-anchor="middle">
+              ${labState.swabProgress >= 100 ? 'سدادة معقّمة 100% ✓' : 'افرك السدادة بالمسحة الكحولية'}
+            </text>
+          </g>
+
+          <!-- Draggable Alcohol Swab -->
+          <g class="grabbable" transform="translate(${labState.swabX - 38}, ${labState.swabY - 26})"
+             onpointerdown="startDrag('swab', evt)">
+            <rect x="0" y="0" width="76" height="52" rx="10" fill="#f8fafc" stroke="#38bdf8" stroke-width="2"/>
+            <text x="38" y="23" fill="#0284c7" font-size="11" font-weight="bold" text-anchor="middle">مسحة كحول</text>
+            <text x="38" y="39" fill="#475569" font-size="10" font-weight="bold" text-anchor="middle">70% IPA</text>
+          </g>
+
+          <!-- Draggable 3.0 mL Syringe -->
+          <g class="${labState.syringeInsertedInVial ? '' : 'grabbable'}"
+             transform="translate(${labState.syringeX - 24}, ${labState.syringeY})"
+             onpointerdown="${labState.syringeInsertedInVial ? '' : "startDrag('syringeMove', evt)"}">
+            <!-- Needle pointing down toward vial -->
+            <line x1="24" y1="115" x2="24" y2="152" stroke="#cbd5e1" stroke-width="2.2"/>
+            <!-- Barrel -->
+            <rect x="8" y="25" width="32" height="90" rx="5" fill="rgba(241,245,249,0.2)" stroke="#94a3b8" stroke-width="1.8"/>
+            <!-- Drawn Insulin Fluid -->
+            <rect x="10" y="${113 - fluidHeight}" width="28" height="${fluidHeight}" fill="rgba(14,165,233,0.65)"/>
+            <!-- Graduation Lines -->
+            <line x1="8" y1="45" x2="18" y2="45" stroke="#cbd5e1" stroke-width="1.2"/>
+            <line x1="8" y1="68" x2="20" y2="68" stroke="#cbd5e1" stroke-width="1.2"/>
+            <line x1="8" y1="90" x2="18" y2="90" stroke="#cbd5e1" stroke-width="1.2"/>
+            <!-- Draggable Plunger -->
+            <g class="${labState.syringeInsertedInVial ? 'grabbable' : ''}"
+               transform="translate(0, ${plungerOffset})"
+               onpointerdown="${labState.syringeInsertedInVial ? "startDrag('plungerDraw', evt)" : ''}">
+              <rect x="11" y="22" width="26" height="7" rx="2" fill="#0f172a"/>
+              <rect x="21" y="-28" width="6" height="50" fill="#94a3b8"/>
+              <rect x="4" y="-34" width="40" height="8" rx="4" fill="#38bdf8"/>
+              ${labState.syringeInsertedInVial ? '<text x="24" y="-42" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">⬇️ اسحب المكبس لأسفل</text>' : ''}
+            </g>
+          </g>
+        `;
+      } else if (s === 1) {
+        const bubblesLeft = Math.max(0, 3 - labState.bubblesTaps);
+        metric.textContent = `الفقاعات المتبقية: ${bubblesLeft} | الهواء: ${labState.bubblesExpelled ? 'مطرود ✓' : 'موجود'}`;
+        hint.textContent = bubblesLeft > 0
+          ? '👆 انقر بإصبعك على جسم السرنجة لطرد الفقاعات للأعلى'
+          : '🖐️ اسحب مقبض المكبس الأزرق للأعلى لطرد الهواء خارج الإبرة';
+
+        svg.innerHTML = `
+          <text x="280" y="34" fill="#38bdf8" font-size="14" font-weight="bold" text-anchor="middle">
+            ${bubblesLeft > 0 ? `انقر على جسم السرنجة لطرد الفقاعات (${labState.bubblesTaps}/3)` : '⬆️ اسحب المكبس الأزرق للأعلى لإخراج الهواء'}
+          </text>
+
+          <!-- Vertical Syringe Needle UP -->
+          <g transform="translate(245, 55)">
+            <!-- Needle pointing UP -->
+            <line x1="35" y1="0" x2="35" y2="48" stroke="#e2e8f0" stroke-width="2.5"/>
+            <!-- Barrel -->
+            <rect x="10" y="48" width="50" height="155" rx="8" fill="rgba(241,245,249,0.16)" stroke="#38bdf8" stroke-width="2"
+                  style="cursor:pointer;" onpointerdown="tapSyringeStage2()"/>
+            <!-- Insulin Liquid -->
+            <rect x="13" y="68" width="44" height="132" rx="4" fill="rgba(14,165,233,0.58)"
+                  style="cursor:pointer;" onpointerdown="tapSyringeStage2()"/>
+
+            <!-- Floating Air Bubbles inside barrel -->
+            ${bubblesLeft >= 1 ? `<circle cx="28" cy="${165 - labState.bubblesTaps * 30}" r="6" fill="#fff" opacity="0.85" onpointerdown="tapSyringeStage2()"/>` : ''}
+            ${bubblesLeft >= 2 ? `<circle cx="43" cy="${145 - labState.bubblesTaps * 25}" r="5" fill="#fff" opacity="0.85" onpointerdown="tapSyringeStage2()"/>` : ''}
+            ${bubblesLeft >= 3 ? `<circle cx="34" cy="180" r="7" fill="#fff" opacity="0.85" onpointerdown="tapSyringeStage2()"/>` : ''}
+
+            <!-- Plunger at bottom (draggable UP) -->
+            <g class="grabbable" onpointerdown="startDrag('plungerExpel', evt)">
+              <rect x="14" y="198" width="42" height="9" rx="3" fill="#0f172a"/>
+              <rect x="31" y="207" width="8" height="58" fill="#94a3b8"/>
+              <rect x="8" y="263" width="54" height="11" rx="5" fill="#10b981"/>
+              <text x="35" y="292" fill="#10b981" font-size="12" font-weight="bold" text-anchor="middle">⬆️ اسحب للأعلى لطرد الهواء</text>
+            </g>
+          </g>
+        `;
+      } else if (s === 2) {
+        const inSweetSpot = labState.cartNeedleDepth >= 70 && labState.cartNeedleDepth <= 88;
+        metric.textContent = `عمق الإبرة: ${labState.cartNeedleDepth}% | تعبئة الخزان: ${Math.round(labState.cartFillProgress)}%`;
+        hint.textContent = !inSweetSpot
+          ? '🖐️ اسحب السرنجة عموديًا داخل المنفذ الأبيض وتوقف في المنطقة الخضراء (~3-4 مم ظاهر)'
+          : (!labState.cartVacuumPulled
+              ? '🖐️ اسحب المكبس الأزرق للأعلى أولًا لتفريغ الهواء من الخزان'
+              : '🖐️ اسحب المكبس الأزرق لأسفل لحقن 250 وحدة داخل الخزان');
+
+        const needleTipY = 128 + (labState.cartNeedleDepth / 100) * 58;
+        const syringeTopY = needleTipY - 125;
+        const cartFillH = (labState.cartFillProgress / 100) * 95;
+
+        svg.innerHTML = `
+          <!-- Depth Calibrated Gauge on Left -->
+          <rect x="24" y="55" width="24" height="230" rx="12" fill="#0f172a" stroke="#334155"/>
+          <!-- Sweet Spot Zone -->
+          <rect x="26" y="185" width="20" height="44" fill="rgba(16,185,129,0.35)" stroke="#10b981" stroke-dasharray="3 2"/>
+          <rect x="28" y="59" width="16" height="${(labState.cartNeedleDepth / 100) * 222}" rx="8"
+                fill="${labState.cartNeedleDepth > 90 ? '#ef4444' : (inSweetSpot ? '#10b981' : '#38bdf8')}"/>
+          <text x="58" y="210" fill="#10b981" font-size="11" font-weight="bold">منطقة التوقف المثالية (إبقاء جزء فضي ظاهر)</text>
+
+          <!-- Tandem Cartridge Body at bottom center -->
+          <g transform="translate(230, 185)">
+            <rect x="0" y="0" width="110" height="145" rx="14" fill="#1e293b" stroke="#6366f1" stroke-width="2.2"/>
+            <!-- Insulin Filling inside Cartridge -->
+            <rect x="8" y="${135 - cartFillH}" width="94" height="${cartFillH}" rx="6" fill="rgba(14,165,233,0.6)"/>
+            <!-- White Fill Port -->
+            <circle cx="55" cy="0" r="14" fill="#f8fafc" stroke="#38bdf8" stroke-width="2.5"/>
+            <text x="55" y="75" fill="#e2e8f0" font-size="12" font-weight="bold" text-anchor="middle">خزان Tandem</text>
+            <text x="55" y="94" fill="#94a3b8" font-size="11" text-anchor="middle">${Math.round((labState.cartFillProgress / 100) * 250)} / 250 u</text>
+          </g>
+
+          <!-- Draggable Syringe Entering White Port -->
+          <g class="grabbable" transform="translate(261, ${syringeTopY})"
+             onpointerdown="startDrag('needleDepth', evt)">
+            <!-- Silver Needle Shaft -->
+            <line x1="24" y1="90" x2="24" y2="128" stroke="#e2e8f0" stroke-width="2.5"/>
+            <!-- Barrel -->
+            <rect x="8" y="10" width="32" height="80" rx="5" fill="rgba(241,245,249,0.22)" stroke="#38bdf8" stroke-width="1.8"/>
+            <rect x="10" y="${12 + (labState.cartFillProgress / 100) * 76}" width="28" height="${76 - (labState.cartFillProgress / 100) * 76}" fill="rgba(14,165,233,0.65)"/>
+            <!-- Plunger Handle (Active once needle depth is in sweet spot) -->
+            <g class="${inSweetSpot ? 'grabbable' : ''}"
+               transform="translate(0, ${(labState.cartFillProgress / 100) * 72 - (labState.cartVacuumPulled && labState.cartFillProgress === 0 ? 18 : 0)})"
+               onpointerdown="${inSweetSpot ? "startDrag('cartFill', evt)" : ''}">
+              <rect x="11" y="10" width="26" height="6" fill="#0f172a"/>
+              <rect x="21" y="-28" width="6" height="38" fill="#94a3b8"/>
+              <rect x="4" y="-35" width="40" height="8" rx="4" fill="${inSweetSpot ? '#10b981' : '#38bdf8'}"/>
+            </g>
+          </g>
+        `;
+      } else if (s === 3) {
+        metric.textContent = labState.cartridgeLoaded3D ? 'الخزان: مثبّت ✓' : 'الخزان: جاهز للتركيب';
+        hint.textContent = '🖐️ أمسك الخزان المملوء على اليمين واسحبه لليسار داخل مسار المضخة';
+
+        svg.innerHTML = `
+          <!-- Tandem Pump Side Chassis on Left -->
+          <g transform="translate(75, 55)">
+            <rect x="0" y="0" width="150" height="245" rx="22" fill="#0f172a" stroke="#38bdf8" stroke-width="2.2"/>
+            <rect x="132" y="25" width="18" height="195" rx="6" fill="rgba(56,189,248,0.18)" stroke="#38bdf8" stroke-dasharray="5 3"/>
+            <text x="72" y="115" fill="#38bdf8" font-size="14" font-weight="bold" text-anchor="middle">Tandem t:slim X2</text>
+            <text x="72" y="136" fill="#94a3b8" font-size="11" text-anchor="middle">مسار تركيب الخزان ⬅️</text>
+          </g>
+
+          <!-- Draggable Filled Cartridge -->
+          <g class="grabbable" transform="translate(${labState.cartSlideX}, 80)"
+             onpointerdown="startDrag('slideCartridge', evt)">
+            <rect x="0" y="0" width="68" height="195" rx="12" fill="#1e293b" stroke="${labState.cartridgeLoaded3D ? '#10b981' : '#6366f1'}" stroke-width="2.5"/>
+            <rect x="8" y="25" width="52" height="155" rx="6" fill="rgba(14,165,233,0.6)"/>
+            <text x="34" y="100" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">250 u</text>
+            <text x="34" y="216" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">
+              ${labState.cartridgeLoaded3D ? 'مثبّت ✓' : '⬅️ اسحب للتركيب'}
+            </text>
+          </g>
+        `;
+      } else if (s === 4) {
+        const locked = labState.tlockTurnAngle >= 88;
+        metric.textContent = `القفل: ${locked ? 'مربوط ✓' : labState.tlockTurnAngle + '°'} | الأنبوب: ${labState.tubingPrimedUnits.toFixed(1)}u`;
+        hint.textContent = !labState.tlockConnected
+          ? '🖐️ اسحب موصل t:lock الأزرق لليسار لتوصيله بمنفذ الخزان'
+          : (!locked
+              ? '🖐️ اسحب الحلقة الذهبية وأدرها (90°) حتى تقفل'
+              : '💧 اضغط زر "تعبئة الأنبوب" بالأسفل حتى ظهور 3 قطرات');
+
+        if (locked) {
+          extraBtns.innerHTML = `<button class="btn-action" onclick="primeTubingAction()">💧 ضخ وتعبئة الأنبوب (+5 وحدات)</button>`;
+        }
+
+        svg.innerHTML = `
+          <!-- Pump Cartridge Port on Left -->
+          <g transform="translate(80, 95)">
+            <rect x="0" y="0" width="145" height="160" rx="18" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+            <rect x="145" y="62" width="24" height="36" rx="5" fill="#94a3b8"/>
+            <text x="72" y="85" fill="#e2e8f0" font-size="13" font-weight="bold" text-anchor="middle">منفذ الخزان</text>
+          </g>
+
+          <!-- Tubing Coils + Drops -->
+          <path d="M ${labState.tlockX + 68} 175 C 390 175, 420 270, 470 250" fill="none" stroke="${labState.tubingPrimedUnits >= 10 ? '#0ea5e9' : '#64748b'}" stroke-width="5"/>
+          ${labState.tubingPrimedUnits >= 5 ? '<circle cx="475" cy="268" r="5" fill="#38bdf8"/>' : ''}
+          ${labState.tubingPrimedUnits >= 10 ? '<circle cx="475" cy="284" r="6" fill="#38bdf8"/><circle cx="475" cy="302" r="6" fill="#0ea5e9"/>' : ''}
+
+          <!-- Draggable & Rotatable t:lock Connector -->
+          <g class="grabbable" transform="translate(${labState.tlockX}, 148)"
+             onpointerdown="${!labState.tlockConnected ? "startDrag('tlockDrag', evt)" : "startDrag('tlockRotate', evt)"}">
+            <rect x="0" y="0" width="68" height="54" rx="10" fill="${locked ? '#10b981' : '#0284c7'}" stroke="#f8fafc" stroke-width="2"/>
+            <!-- Rotating Gold Locking Ring -->
+            <rect x="14" y="-6" width="22" height="66" rx="5" fill="#f59e0b"
+                  transform="rotate(${labState.tlockTurnAngle * 0.25}, 25, 27)"/>
+            <text x="34" y="31" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">t:lock</text>
+            <text x="34" y="76" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">
+              ${!labState.tlockConnected ? '⬅️ اسحب للخزان' : (!locked ? '🔄 اسحب للتدوير 90°' : 'مقفل بإحكام ✓')}
+            </text>
+          </g>
+        `;
+      } else if (s === 5) {
+        metric.textContent = `التعقيم: ${labState.siteSwabProgress}% | الكانيولا: ${labState.cannulaInserted ? 'مثبّتة ✓' : 'غير مثبّتة'}`;
+        hint.textContent = !labState.selectedSite
+          ? '👆 اضغط على أحد المواقع الخضراء المتاحة على خريطة الجسم'
+          : (labState.siteSwabProgress < 100
+              ? '🖐️ افرك الدائرة الخضراء بالمسحة الكحولية لتعقيم الجلد'
+              : '🖐️ اسحب أداة الكانيولا (Autosoft) وضعها فوق الموقع المعقّم');
+
+        svg.innerHTML = `
+          <!-- Anatomical Abdomen & Sites Map -->
+          <g transform="translate(85, 35)">
+            <rect x="0" y="0" width="230" height="285" rx="48" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="1.8"/>
+            <text x="115" y="28" fill="#94a3b8" font-size="12" font-weight="bold" text-anchor="middle">خريطة تدوير مواقع الحقن</text>
+            <!-- Navel -->
+            <circle cx="115" cy="145" r="8" fill="#334155" stroke="#64748b"/>
+            <text x="115" y="166" fill="#64748b" font-size="10" text-anchor="middle">السرة</text>
+
+            <!-- Previous Site (Amber - Blocked) -->
+            <g style="cursor:not-allowed;" onclick="selectBodySite('يمين السرة', 145, 180, true)">
+              <circle cx="60" cy="145" r="22" fill="rgba(245,158,11,0.22)" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 3"/>
+              <text x="60" y="149" fill="#f59e0b" font-size="10" font-weight="bold" text-anchor="middle">السابق ⚠️</text>
+            </g>
+
+            <!-- Available Site 1: Left Abdomen -->
+            <g style="cursor:pointer;" onclick="selectBodySite('يسار السرة (5 سم)', 255, 180, false)">
+              <circle cx="170" cy="145" r="24" fill="${labState.selectedSite === 'يسار السرة (5 سم)' ? 'rgba(16,185,129,0.38)' : 'rgba(16,185,129,0.16)'}" stroke="#10b981" stroke-width="2.2"/>
+              <text x="170" y="149" fill="#10b981" font-size="10" font-weight="bold" text-anchor="middle">البطن ✓</text>
+            </g>
+
+            <!-- Available Site 2: Outer Thigh -->
+            <g style="cursor:pointer;" onclick="selectBodySite('أعلى الفخذ الخارجي', 255, 265, false)">
+              <circle cx="170" cy="230" r="24" fill="${labState.selectedSite === 'أعلى الفخذ الخارجي' ? 'rgba(16,185,129,0.38)' : 'rgba(16,185,129,0.16)'}" stroke="#10b981" stroke-width="2.2"/>
+              <text x="170" y="234" fill="#10b981" font-size="10" font-weight="bold" text-anchor="middle">الفخذ ✓</text>
+            </g>
+          </g>
+
+          <!-- Draggable Alcohol Swab -->
+          <g class="grabbable" transform="translate(${labState.swabX - 36}, ${labState.swabY - 24})"
+             onpointerdown="startDrag('siteSwab', evt)">
+            <rect x="0" y="0" width="72" height="48" rx="10" fill="#f8fafc" stroke="#38bdf8" stroke-width="2"/>
+            <text x="36" y="22" fill="#0284c7" font-size="11" font-weight="bold" text-anchor="middle">مسحة كحول</text>
+            <text x="36" y="37" fill="#475569" font-size="10" text-anchor="middle">${labState.siteSwabProgress}%</text>
+          </g>
+
+          <!-- Draggable Autosoft Cannula Inserter -->
+          <g class="grabbable" transform="translate(${labState.cannulaX - 35}, ${labState.cannulaY - 35})"
+             onpointerdown="startDrag('cannulaDrag', evt)">
+            <circle cx="35" cy="35" r="32" fill="${labState.cannulaInserted ? '#10b981' : '#0284c7'}" stroke="#fff" stroke-width="2.2"/>
+            <text x="35" y="33" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">كانيولا</text>
+            <text x="35" y="48" fill="#e0f2fe" font-size="10" text-anchor="middle">${labState.cannulaInserted ? 'مثبّتة ✓' : 'اسحب للجلد'}</text>
+          </g>
+        `;
+      }
+    }
+
+    /* =========================================================
+       REALISTIC TANDEM t:slim X2 SCREEN SIMULATOR
+    ========================================================= */
+    function pumpWakeButton() {
+      playSound('click');
+      if (labState.pumpScreenState === 'locked') {
+        labState.pumpScreenState = 'pin';
+        labState.pinEntered = '';
+      } else {
+        labState.pumpScreenState = 'home';
+      }
+      renderPumpScreen();
+    }
+
+    function enterPinDigit(d) {
+      playSound('click');
+      labState.pinEntered += d;
+      if (labState.pinEntered === '123') {
+        labState.pumpScreenState = 'home';
+        playSound('success');
+        showCoachingAlert('🔓 تم فتح قفل الشاشة بنجاح (1-2-3)!', true);
+      } else if (labState.pinEntered.length >= 3) {
+        labState.pinEntered = '';
+        penalizeExam('❌ رمز الفتح غير صحيح. التسلسل الصحيح لشاشة Tandem هو: 1 ثم 2 ثم 3.', 5);
+      }
+      renderPumpScreen();
+    }
+
+    function renderPumpScreen() {
+      const scr = document.getElementById('pumpScreen');
+      const led = document.getElementById('pumpLed');
+      const st = labState.pumpScreenState;
+
+      led.className = 'pump-led' + (labState.insulinResumed ? '' : ' yellow');
+
+      const headerHtml = `
+        <div class="pump-status-strip">
+          <span>🔋 95%</span>
+          <span style="color:#38bdf8; font-weight:800;">◆ Control-IQ</span>
+          <span>💧 ${labState.cartridgeLoaded3D ? '250u' : '0u'}</span>
+        </div>
+      `;
+
+      if (st === 'locked') {
+        scr.innerHTML = `
+          ${headerHtml}
+          <div style="text-align:center; margin:auto 0;">
+            <div style="font-size:1.55rem; font-weight:900; color:#38bdf8;">112</div>
+            <div style="font-size:0.66rem; color:#94a3b8;">mg/dL → (Dexcom G7)</div>
+            <div style="margin-top:10px; font-size:0.73rem; color:#f59e0b;">اضغط زر (t) بالأسفل لفتح الشاشة</div>
+          </div>
+          <div style="text-align:center; font-size:0.66rem; color:#64748b;">Tandem Diabetes Care</div>
+        `;
+      } else if (st === 'pin') {
+        scr.innerHTML = `
+          ${headerHtml}
+          <div style="text-align:center;">
+            <div style="font-weight:800; color:#38bdf8; margin-bottom:2px;">اضغط 1 - 2 - 3 للفتح</div>
+            <div style="font-size:0.72rem; color:#94a3b8;">المدخل: ${labState.pinEntered || '---'}</div>
+            <div class="pin-grid">
+              ${[1,2,3,4,5,6,7,8,9].map(n => `<button class="pin-key" onclick="enterPinDigit('${n}')">${n}</button>`).join('')}
+            </div>
+          </div>
+          <div></div>
+        `;
+      } else if (st === 'home') {
+        scr.innerHTML = `
+          ${headerHtml}
+          <div style="display:flex; justify-content:space-between; align-items:center; background:#0f172a; padding:6px 8px; border-radius:9px;">
+            <div>
+              <div style="font-size:1.3rem; font-weight:900; color:#38bdf8; line-height:1.1;">112 <span style="font-size:0.88rem;">→</span></div>
+              <div style="font-size:0.62rem; color:#94a3b8;">IOB: 1.25 u | 2:15 hrs</div>
+            </div>
+            <span style="background:rgba(14,165,233,0.2); color:#38bdf8; padding:2px 6px; border-radius:6px; font-size:0.64rem; font-weight:800;">◆ نشط</span>
+          </div>
+          <div>
+            <button class="screen-btn primary" onclick="playSound('click'); labState.pumpScreenState='options'; renderPumpScreen();">⚙️ Options (خيارات)</button>
+            <button class="screen-btn" onclick="playSound('click'); labState.pumpScreenState='load'; renderPumpScreen();">🔋 Load (تعبئة الخزان)</button>
+          </div>
+        `;
+      } else if (st === 'options') {
+        scr.innerHTML = `
+          ${headerHtml}
+          <div style="font-weight:800; color:#38bdf8; text-align:center;">Options (خيارات)</div>
+          <div>
+            <button class="screen-btn primary" onclick="playSound('click'); labState.pumpScreenState='load'; renderPumpScreen();">🔋 Load (تعبئة الخزان)</button>
+            <button class="screen-btn" onclick="playSound('click'); labState.pumpScreenState='home'; renderPumpScreen();">🏠 الشاشة الرئيسية</button>
+          </div>
+          <div></div>
+        `;
+      } else if (st === 'load') {
+        scr.innerHTML = `
+          ${headerHtml}
+          <div style="font-weight:800; color:#38bdf8; text-align:center;">Load (تعبئة)</div>
+          <div>
+            <button class="screen-btn primary" onclick="playSound('click'); labState.pumpScreenState='changeCartridge'; renderPumpScreen();">1. Change Cartridge</button>
+            <button class="screen-btn" onclick="playSound('click'); labState.pumpScreenState='fillTubing'; renderPumpScreen();">2. Fill Tubing</button>
+            <button class="screen-btn" onclick="playSound('click'); labState.pumpScreenState='fillCannula'; renderPumpScreen();">3. Fill Cannula</button>
+          </div>
+          <button class="screen-btn" onclick="labState.pumpScreenState='options'; renderPumpScreen();">رجوع</button>
+        `;
+      } else if (st === 'changeCartridge') {
+        scr.innerHTML = `
+          ${headerHtml}
+          <div style="text-align:center; padding:6px 0;">
+            <strong style="color:#f59e0b;">تغيير الخزان</strong>
+            <p style="font-size:0.7rem; color:#cbd5e1; margin-top:4px;">اسحب الخزان المملوء على طاولة العمل وأدخله في مسار المضخة بيدك.</p>
+          </div>
+          <div style="text-align:center; font-size:0.72rem; color:#38bdf8;">في انتظار تركيب الخزان...</div>
+        `;
+      } else if (st === 'fillTubing') {
+        scr.innerHTML = `
+          ${headerHtml}
+          <div style="text-align:center;">
+            <strong style="color:#38bdf8;">Fill Tubing (تعبئة الأنبوب)</strong>
+            <p style="font-size:0.7rem; color:#cbd5e1; margin:4px 0;">اضغط Start لإخراج الهواء حتى ظهور 3 قطرات عند طرف الإبرة.</p>
+            <div style="font-weight:800; color:#10b981;">المضخوخ: ${labState.tubingPrimedUnits.toFixed(1)} u</div>
+          </div>
+          <button class="screen-btn primary" onclick="primeTubingAction()">▶️ Start Fill (+5u)</button>
+        `;
+      } else if (st === 'fillCannula' || st === 'resumePrompt') {
+        scr.innerHTML = `
+          ${headerHtml}
+          <div style="text-align:center;">
+            <strong style="color:#10b981;">Fill Cannula & Resume</strong>
+            <p style="font-size:0.7rem; color:#cbd5e1; margin:4px 0;">
+              ${labState.cannulaFilled ? 'تمت تعبئة الكانيولا (0.5u). الخطوة الأخيرة:' : 'اسحب الكانيولا إلى موقع الحقن المعقّم أولًا.'}
+            </p>
+          </div>
+          <button class="screen-btn primary" style="background:#10b981; border-color:#34d399;" onclick="resumeInsulinFinal()">▶️ Resume Insulin</button>
+        `;
+      } else if (st === 'completed') {
+        scr.innerHTML = `
+          ${headerHtml}
+          <div style="text-align:center; margin:auto 0;">
+            <div style="font-size:1.7rem;">🎉</div>
+            <strong style="color:#10b981;">اكتمل الإعداد بنجاح!</strong>
+            <p style="font-size:0.7rem; color:#cbd5e1; margin-top:4px;">ضخ الإنسولين نشط وتقنية Control-IQ 7.8.1 تعمل بأمان.</p>
+          </div>
+          <button class="screen-btn" onclick="labState.pumpScreenState='home'; renderPumpScreen();">عرض الشاشة الرئيسية</button>
+        `;
+      }
+    }
+
+    function resumeInsulinFinal() {
+      if (!labState.cannulaFilled) {
+        penalizeExam('⚠️ اسحب الكانيولا إلى موقع الحقن المعقّم على الخريطة قبل الضغط على Resume Insulin!', 10);
+        return;
+      }
+      playSound('success');
+      labState.insulinResumed = true;
+      labState.pumpScreenState = 'completed';
+      document.getElementById('telDelivery').textContent = 'نشط (Control-IQ) ✓';
+      document.getElementById('telDelivery').style.color = 'var(--accent-emerald)';
+      clearInterval(labState.timerInterval);
+      renderPumpScreen();
+      const scoreMsg = labState.mode === 'exam' ? ` | نتيجتك النهائية: ${labState.score}%` : '';
+      showCoachingAlert(`🏆 عمل رائع! أتممت جميع خطوات تجهيز وتركيب مضخة Tandem t:slim X2 بيدك بنجاح سريري كامل${scoreMsg}`, true);
+    }
+
+    function updateLabUI() {
+      const s = STAGES[labState.stage];
+      document.getElementById('stageTitle').textContent = s.title;
+      document.getElementById('handCueText').textContent = s.cue;
+      document.getElementById('stageDesc').textContent = s.desc;
+      renderToolShelf();
+      renderStepPills();
+      renderTactileMat();
+      renderPumpScreen();
+    }
+
+    function resetLab() {
+      clearInterval(labState.timerInterval);
+      const currentMode = labState.mode;
+      labState = {
+        mode: currentMode,
+        stage: 0,
+        score: 100,
+        timeLeft: 30,
+        timerInterval: null,
+        swabX: 90, swabY: 120,
+        swabProgress: 0,
+        lastSwabX: null,
+        syringeX: 430, syringeY: 165,
+        syringeInsertedInVial: false,
+        plungerPull: 0,
+        bubblesTaps: 0,
+        bubblesExpelled: false,
+        cartNeedleDepth: 15,
+        cartVacuumPulled: false,
+        cartFillProgress: 0,
+        cartSlideX: 390,
+        cartridgeLoaded3D: false,
+        tlockX: 395,
+        tlockConnected: false,
+        tlockTurnAngle: 0,
+        tubingPrimedUnits: 0,
+        selectedSite: '',
+        siteX: 0, siteY: 0,
+        siteSwabProgress: 0,
+        cannulaX: 430, cannulaY: 130,
+        cannulaInserted: false,
+        cannulaFilled: false,
+        insulinResumed: false,
+        pumpScreenState: 'locked',
+        pinEntered: '',
+        readyItems: []
+      };
+      document.getElementById('readyDockList').innerHTML = `
+        <div style="text-align:center; padding:1.4rem 0.5rem; color:var(--text-muted); font-size:0.78rem; border:1px dashed var(--border-subtle); border-radius:12px;">
+          ابدأ بمسح سدادة القلم بيدك بالمسحة الكحولية.
+        </div>
+      `;
+      document.getElementById('readyCount').textContent = '0 / 6';
+      document.getElementById('telSwab').textContent = '0%';
+      document.getElementById('telInsulin').textContent = '0 وحدة';
+      document.getElementById('telBubbles').textContent = 'غير مفحوص';
+      document.getElementById('telNeedle').textContent = '—';
+      document.getElementById('telTubing').textContent = '0.0 وحدة';
+      document.getElementById('telCannula').textContent = 'غير مكتمل';
+      document.getElementById('telDelivery').textContent = 'متوقف';
+      document.getElementById('telDelivery').style.color = 'var(--accent-amber)';
+      hideCoachingAlert();
+      if (currentMode === 'exam') {
+        document.getElementById('examScore').textContent = '100';
+        resetExamTimer();
+      }
+      updateLabUI();
+      draw3DPump();
+    }
+
+    /* =========================================================
+       360° INTERACTIVE 3D ENGINE
+    ========================================================= */
+    let view3D = { rotY: 0.35, rotX: -0.15, dragging: false, lastX: 0, lastY: 0 };
+
+    function setWorkspaceView(v) {
+      document.getElementById('btnView2D').classList.toggle('active', v === '2d');
+      document.getElementById('btnView3D').classList.toggle('active', v === '3d');
+      document.getElementById('bench2DContainer').style.display = v === '2d' ? 'grid' : 'none';
+      document.getElementById('studio3dContainer').classList.toggle('active', v === '3d');
+      if (v === '3d') draw3DPump();
+    }
+
+    function rotate3DTo(preset) {
+      if (preset === 'front') { view3D.rotY = 0; view3D.rotX = 0; }
+      else if (preset === 'back') { view3D.rotY = Math.PI; view3D.rotX = 0; }
+      else if (preset === 'side') { view3D.rotY = Math.PI / 2.2; view3D.rotX = -0.1; }
+      draw3DPump();
+    }
+
+    function toggle3DCartridge() {
+      playSound('click');
+      labState.cartridgeLoaded3D = !labState.cartridgeLoaded3D;
+      draw3DPump();
+    }
+
+    function init3DControls() {
+      const cvs = document.getElementById('pump3dCanvas');
+      cvs.addEventListener('pointerdown', e => {
+        view3D.dragging = true;
+        view3D.lastX = e.clientX;
+        view3D.lastY = e.clientY;
+      });
+      window.addEventListener('pointermove', e => {
+        if (!view3D.dragging) return;
+        const dx = e.clientX - view3D.lastX;
+        const dy = e.clientY - view3D.lastY;
+        view3D.rotY += dx * 0.012;
+        view3D.rotX = Math.max(-0.8, Math.min(0.8, view3D.rotX + dy * 0.01));
+        view3D.lastX = e.clientX;
+        view3D.lastY = e.clientY;
+        draw3DPump();
+      });
+      window.addEventListener('pointerup', () => view3D.dragging = false);
+    }
+
+    function project3D(x, y, z, cx, cy, scale = 190) {
+      const cosY = Math.cos(view3D.rotY), sinY = Math.sin(view3D.rotY);
+      const x1 = x * cosY - z * sinY;
+      const z1 = x * sinY + z * cosY;
+      const cosX = Math.cos(view3D.rotX), sinX = Math.sin(view3D.rotX);
+      const y2 = y * cosX - z1 * sinX;
+      const z2 = y * sinX + z1 * cosX;
+      const fov = 4.2;
+      const factor = fov / (fov + z2);
+      return { x: cx + x1 * scale * factor, y: cy + y2 * scale * factor, z: z2 };
+    }
+
+    function draw3DPump() {
+      const cvs = document.getElementById('pump3dCanvas');
+      if (!cvs) return;
+      const ctx = cvs.getContext('2d');
+      const W = cvs.width, H = cvs.height;
+      ctx.clearRect(0, 0, W, H);
+
+      const cx = W / 2, cy = H / 2;
+      const w = 0.48, h = 0.72, d = 0.16;
+      const verts = [
+        [-w, -h,  d], [ w, -h,  d], [ w,  h,  d], [-w,  h,  d],
+        [-w, -h, -d], [ w, -h, -d], [ w,  h, -d], [-w,  h, -d]
+      ];
+      const proj = verts.map(v => project3D(v[0], v[1], v[2], cx, cy));
+
+      const faces = [
+        { idx: [0,1,2,3], color: '#1e293b', label: 'front' },
+        { idx: [5,4,7,6], color: '#0f172a', label: 'back' },
+        { idx: [1,5,6,2], color: '#334155', label: 'right' },
+        { idx: [4,0,3,7], color: '#273549', label: 'left' },
+        { idx: [4,5,1,0], color: '#475569', label: 'top' },
+        { idx: [3,2,6,7], color: '#1e293b', label: 'bottom' }
+      ];
+
+      faces.sort((a, b) => {
+        const za = a.idx.reduce((s, i) => s + proj[i].z, 0) / 4;
+        const zb = b.idx.reduce((s, i) => s + proj[i].z, 0) / 4;
+        return zb - za;
+      });
+
+      faces.forEach(f => {
+        ctx.beginPath();
+        f.idx.forEach((vi, k) => {
+          if (k === 0) ctx.moveTo(proj[vi].x, proj[vi].y);
+          else ctx.lineTo(proj[vi].x, proj[vi].y);
+        });
+        ctx.closePath();
+        ctx.fillStyle = f.color;
+        ctx.fill();
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 1.4;
+        ctx.stroke();
+
+        if (f.label === 'front' && proj[0].z < 0.08) {
+          const sVerts = [[-0.38, -0.56, d+0.005], [0.38, -0.56, d+0.005], [0.38, 0.48, d+0.005], [-0.38, 0.48, d+0.005]];
+          const sp = sVerts.map(v => project3D(v[0], v[1], v[2], cx, cy));
+          ctx.beginPath();
+          sp.forEach((p, k) => k === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
+          ctx.closePath();
+          ctx.fillStyle = '#060c18';
+          ctx.fill();
+          ctx.strokeStyle = '#0ea5e9';
+          ctx.stroke();
+
+          const mid = project3D(0, -0.05, d+0.01, cx, cy);
+          ctx.fillStyle = '#38bdf8';
+          ctx.font = 'bold 18px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('112 mg/dL →', mid.x, mid.y);
+          ctx.font = 'bold 12px sans-serif';
+          ctx.fillStyle = '#10b981';
+          ctx.fillText('Control-IQ 7.8.1', mid.x, mid.y + 22);
+        }
+
+        if (f.label === 'back' && proj[4].z < 0.08) {
+          const holes = [[-0.18, -0.25], [0.18, -0.25], [-0.18, 0], [0.18, 0], [-0.18, 0.25], [0.18, 0.25]];
+          holes.forEach(hPos => {
+            const hp = project3D(hPos[0], hPos[1], -d - 0.005, cx, cy);
+            ctx.beginPath();
+            ctx.arc(hp.x, hp.y, 7, 0, Math.PI * 2);
+            ctx.fillStyle = '#020617';
+            ctx.fill();
+            ctx.strokeStyle = '#64748b';
+            ctx.stroke();
+          });
+          const lbl = project3D(0, 0.48, -d - 0.01, cx, cy);
+          ctx.fillStyle = '#94a3b8';
+          ctx.font = 'bold 12px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('6 فتحات تهوية خلفية (لا تغطّها)', lbl.x, lbl.y);
+        }
+
+        if (f.label === 'top') {
+          const ledP = project3D(0, -h - 0.01, 0, cx, cy);
+          ctx.beginPath();
+          ctx.arc(ledP.x, ledP.y, 8, 0, Math.PI * 2);
+          ctx.fillStyle = labState.insulinResumed ? '#10b981' : '#f59e0b';
+          ctx.fill();
+        }
+      });
+
+      const cartOffset = labState.cartridgeLoaded3D ? 0.54 : 0.85;
+      const cw = 0.07, ch = 0.58, cd = 0.13;
+      const cVerts = [
+        [cartOffset-cw, -ch, cd], [cartOffset+cw, -ch, cd], [cartOffset+cw, ch, cd], [cartOffset-cw, ch, cd],
+        [cartOffset-cw, -ch, -cd], [cartOffset+cw, -ch, -cd], [cartOffset+cw, ch, -cd], [cartOffset-cw, ch, -cd]
+      ];
+      const cp = cVerts.map(v => project3D(v[0], v[1], v[2], cx, cy));
+      ctx.beginPath();
+      [0,1,2,3].forEach((vi, k) => k === 0 ? ctx.moveTo(cp[vi].x, cp[vi].y) : ctx.lineTo(cp[vi].x, cp[vi].y));
+      ctx.closePath();
+      ctx.fillStyle = labState.cartridgeLoaded3D ? 'rgba(16, 185, 129, 0.45)' : 'rgba(99, 102, 241, 0.45)';
+      ctx.fill();
+      ctx.strokeStyle = labState.cartridgeLoaded3D ? '#10b981' : '#818cf8';
+      ctx.stroke();
+
+      const cLbl = project3D(cartOffset, 0, cd+0.02, cx, cy);
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 11px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(labState.cartridgeLoaded3D ? 'خزان مثبّت ✓' : 'خزان منفصل', cLbl.x, cLbl.y);
+    }
+
+    /* =========================================================
+       TAB 2: OFFICIAL GUIDE DATA & ALERTS 0A - 26A
+    ========================================================= */
+    const GUIDE_CARDS = [
+      {
+        cat: 'ciq',
+        title: 'المعين الأزرق (زيادة الضخ القاعدي التلقائي)',
+        tag: 'Control-IQ 7.8.1',
+        svg: `<svg width="36" height="36" viewBox="0 0 36 36"><polygon points="18,3 33,18 18,33 3,18" fill="#0ea5e9"/></svg>`,
+        desc: 'يظهر في الزاوية العلوية للشاشة عندما تتنبأ خوارزمية Control-IQ بارتفاع الجلوكوز فوق 160 ملغ/دل خلال 30 دقيقة، فتزيد معدل الضخ القاعدي تلقائيًا.'
+      },
+      {
+        cat: 'ciq',
+        title: 'القطرة الحمراء (جرعة تصحيح تلقائية Auto Bolus)',
+        tag: 'Control-IQ 7.8.1',
+        svg: `<svg width="36" height="36" viewBox="0 0 36 36"><path d="M18 4 C18 4 7 17 7 24 C7 30 12 33 18 33 C24 33 29 30 29 24 C29 17 18 4 18 4 Z" fill="#f43f5e"/></svg>`,
+        desc: 'عندما يُتوقع وصول الجلوكوز إلى 180 ملغ/دل أو أكثر، تعطي المضخة جرعة تصحيح تلقائية (60% من الجرعة المحسوبة) بحد أقصى مرة كل ساعة.'
+      },
+      {
+        cat: 'ciq',
+        title: 'إيقاف / تقليل الضخ القاعدي (الوقاية من الهبوط)',
+        tag: 'Control-IQ 7.8.1',
+        svg: `<svg width="36" height="36" viewBox="0 0 36 36"><rect x="6" y="6" width="24" height="24" rx="6" fill="#64748b"/><line x1="10" y1="26" x2="26" y2="10" stroke="#fff" stroke-width="3"/></svg>`,
+        desc: 'تُقلل المضخة الضخ القاعدي عند توقع انخفاض السكر دون 112.5 ملغ/دل، وتوقفه تمامًا عند توقع الهبوط دون 70 ملغ/دل (أو 80 ملغ/دل في وضع النوم).'
+      },
+      {
+        cat: 'ciq',
+        title: 'أنشطة النوم والرياضة (Sleep & Exercise)',
+        tag: 'Control-IQ 7.8.1',
+        svg: `<svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="14" fill="#6366f1"/><path d="M21 10 A8 8 0 1 0 26 23 A7 7 0 1 1 21 10 Z" fill="#fff"/></svg>`,
+        desc: 'وضع النوم يستهدف نطاقًا أضيق (112.5–120 ملغ/دل) دون جرعات تصحيح تلقائية، بينما يستهدف وضع الرياضة (140–160 ملغ/دل) لحمايتك أثناء التمرين.'
+      },
+      {
+        cat: 'specs',
+        title: 'تصنيف مقاومة الماء IP27',
+        tag: 'المواصفات الفنية',
+        svg: `<svg width="36" height="36" viewBox="0 0 36 36"><rect x="3" y="7" width="30" height="22" rx="5" fill="#0284c7"/><text x="18" y="22" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">IP27</text></svg>`,
+        desc: 'مقاومة للغمر المؤقت في الماء حتى عمق 0.91 متر (3 أقدام) لمدة 30 دقيقة. يُنصح بفصل المضخة عند السباحة أو الاستحمام.'
+      },
+      {
+        cat: 'specs',
+        title: 'التركيز المعتمد U-100 (NovoRapid & Humalog)',
+        tag: 'المواصفات الدوائية',
+        svg: `<svg width="36" height="36" viewBox="0 0 36 36"><rect x="3" y="7" width="30" height="22" rx="5" fill="#10b981"/><text x="18" y="22" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">U-100</text></svg>`,
+        desc: 'تعمل المضخة حصريًا بإنسولين U-100 سريع المفعول: NovoRapid (يُغيّر الخزان وطقم التسريب كل 72 ساعة) أو Humalog (يُغيّر كل 48 ساعة).'
+      },
+      {
+        cat: 'specs',
+        title: 'غير آمن للرنين المغناطيسي (MR Unsafe)',
+        tag: 'تحذير سلامة حاسم',
+        svg: `<svg width="36" height="36" viewBox="0 0 36 36"><polygon points="18,3 34,31 2,31" fill="#f59e0b"/><text x="18" y="26" fill="#000" font-size="11" font-weight="bold" text-anchor="middle">MR</text></svg>`,
+        desc: 'يجب إزالة المضخة وحساس Dexcom G7 بالكامل قبل الدخول لغرف التصوير بالرنين المغناطيسي (MRI) أو الأشعة المقطعية (CT) أو الأشعة السينية.'
+      },
+      {
+        cat: 'specs',
+        title: 'مؤشر LED العلوي للمضخة (أخضر / أصفر / أحمر)',
+        tag: 'مؤشرات الحالة',
+        svg: `<svg width="36" height="36" viewBox="0 0 36 36"><circle cx="10" cy="18" r="4" fill="#10b981"/><circle cx="18" cy="18" r="4" fill="#f59e0b"/><circle cx="26" cy="18" r="4" fill="#f43f5e"/></svg>`,
+        desc: 'الوميض الأخضر: المضخة تعمل وتضخ الإنسولين بشكل طبيعي | الوميض الأصفر: يوجد تنبيه أو تذكير | الوميض الأحمر: إنذار حرج وتوقف ضخ الإنسولين.'
+      }
+    ];
+
+    const ALERTS_DATA = [
+      { code: '0A', sev: 'warn', name: 'تنبيه انخفاض الخزان (Low Cartridge)', cause: 'كمية الإنسولين المتبقية وصلت إلى الحد المنخفض المبرمج (10–40 وحدة).', action: 'جهّز خزانًا جديدًا وإنسولين بدرجة حرارة الغرفة لاستبداله قريبًا.' },
+      { code: '1A', sev: 'danger', name: 'إنذار نفاد الخزان (Empty Cartridge)', cause: 'نفد الإنسولين تمامًا وتوقف الضخ.', action: 'استبدل الخزان فورًا عبر Options ← Load ← Change Cartridge.' },
+      { code: '2A', sev: 'danger', name: 'إنذار انسداد (Occlusion Alarm)', cause: 'انسداد في الكانيولا أو الأنبوب أو تبلور الإنسولين يمنع مرور الجرعة.', action: 'افحص السكر والكيتونات، غيّر طقم التسريب والخزان بموقع جديد، وطبق القاعدة الذهبية للساعتين.' },
+      { code: '3A', sev: 'warn', name: 'تذكير تغيير موقع التسريب (Site Reminder)', cause: 'انتهاء المدة المحددة لتغيير الكانيولا (72 ساعة لـ NovoRapid أو 48 ساعة لـ Humalog).', action: 'أدخل كانيولا جديدة في موقع حقن جديد بعيدًا عن السابق.' },
+      { code: '4A', sev: 'warn', name: 'انخفاض بطارية المضخة (Low Battery)', cause: 'مستوى شحن البطارية أقل من 25%.', action: 'اشحن المضخة عبر كابل Micro-USB المعتمد (لا تغطِّ فتحات التهوية الست الخلفية).' },
+      { code: '5A', sev: 'danger', name: 'نفاد بطارية المضخة (Empty Battery)', cause: 'انخفاض الشحن لدرجة توقف المضخة.', action: 'اشحن المضخة فورًا؛ تتحول البطارية للون الأحمر عند أقل من 5%.' },
+      { code: '6A', sev: 'warn', name: 'تنبيه انخفاض الجلوكوز (CGM Low Alert)', cause: 'قراءة Dexcom G7 هبطت دون الحد المنخفض المحدد.', action: 'افحص السكر بالجهاز المنزلي وعالج الهبوط بـ 15 غرام كربوهيدرات سريعة.' },
+      { code: '7A', sev: 'danger', name: 'انخفاض حاد عاجل (Urgent Low < 55 mg/dL)', cause: 'هبوط جلوكوز الدم إلى 55 ملغ/دل أو أقل.', action: 'عالج الهبوط فورًا بـ 15 غرام سكر سريع وأعد الفحص بعد 15 دقيقة.' },
+      { code: '8A', sev: 'warn', name: 'تنبيه ارتفاع الجلوكوز (CGM High Alert)', cause: 'ارتفاع قراءة الحساس فوق الحد المرتفع المبرمج.', action: 'راجع الكربوهيدرات والجرعات، وافحص الكيتونات إذا استمر الارتفاع > 250 ملغ/دل.' },
+      { code: '9A', sev: 'warn', name: 'فقدان إشارة الحساس (Out of Range)', cause: 'ابتعاد المضخة عن حساس Dexcom G7 لأكثر من 20 دقيقة.', action: 'أبقِ المضخة على نفس جانب الجسم الذي يثبت عليه الحساس.' },
+      { code: '10A', sev: 'warn', name: 'فشل أو انتهاء صلاحية الحساس (Sensor Expired/Failed)', cause: 'انتهاء فترة عمل حساس Dexcom G7 (10 أيام + 12 ساعة سماح) أو تلفه.', action: 'أزل الحساس القديم وركّب حساسًا جديدًا وأدخل رمز الإقران.' },
+      { code: '12A', sev: 'warn', name: 'توقف الضخ لفترة طويلة (Resume Pump Alarm)', cause: 'إيقاف ضخ الإنسولين يدويًا لأكثر من 15 دقيقة.', action: 'اضغط Resume Insulin لاستئناف الضخ القاعدي وتجنب ارتفاع السكر.' },
+      { code: '14A', sev: 'danger', name: 'إلغاء جرعة غير مكتملة (Incomplete Bolus)', cause: 'عدم إكمال إدخال الجرعة على الشاشة خلال 90 ثانية.', action: 'أعد فتح شاشة Bolus وأكمل تأكيد الجرعة.' },
+      { code: '16A', sev: 'danger', name: 'حرارة مرتفعة/منخفضة للمضخة (Temperature Alarm)', cause: 'تعرّض المضخة لحرارة أعلى من 45°م أو برودة أقل من 2°م.', action: 'انقل المضخة إلى بيئة معتدلة (15–30°م) واستبدل الإنسولين إذا تلف.' },
+      { code: '18A', sev: 'danger', name: 'تجاوز الحد الأقصى للجرعة (Max Bolus Exceeded)', cause: 'محاولة إعطاء جرعة تتجاوز الحد الأقصى المبرمج في الإعدادات.', action: 'تحقق من حساب الكربوهيدرات أو عدّل الحد الأقصى بالتنسيق مع فريقك الطبي.' },
+      { code: '20A', sev: 'warn', name: 'تذكير فحص السكر بعد الجرعة (BG Reminder)', cause: 'حلول موعد إعادة فحص الجلوكوز المبرمج بعد الجرعة.', action: 'تحقق من قراءة الحساس أو جهاز قياس الدم.' },
+      { code: '22A', sev: 'warn', name: 'فقدان الجرعة الفائتة (Missed Meal Bolus)', cause: 'عدم إعطاء جرعة وجبة خلال النافذة الزمنية المبرمجة.', action: 'تحقق مما إذا كنت قد تناولت وجبتك دون إعطاء الإنسولين.' },
+      { code: '24A', sev: 'danger', name: 'خطأ في قراءة الخزان (Cartridge Error)', cause: 'عدم تثبيت الخزان بشكل صحيح على مسار المضخة أو وجود خلل بضغط الخزان.', action: 'أزل الخزان، تأكد من نظافة المسار وفتحات التهوية، وأعد تثبيته أو استبدله.' },
+      { code: '26A', sev: 'danger', name: 'عطل نظام المضخة (Malfunction Alarm)', cause: 'رصد خلل تقني داخلي في نظام المضخة (تظهر شاشة حمراء برمز العطل).', action: 'انتقل فورًا لخطة الطوارئ بأقلام الإنسولين واتصل بالدعم الفني الموحد 920023202.' }
+    ];
+
+    let currentGuideFilter = 'all';
+
+    function renderGuideCards() {
+      const grid = document.getElementById('guideCardsGrid');
+      grid.innerHTML = GUIDE_CARDS.map(c => `
+        <div class="symbol-card guide-section" data-cat="${c.cat}">
+          <div class="symbol-header">
+            <div class="symbol-svg-wrap">${c.svg}</div>
+            <div>
+              <h3>${c.title}</h3>
+              <span class="symbol-tag">${c.tag}</span>
+            </div>
+          </div>
+          <p>${c.desc}</p>
+        </div>
+      `).join('');
+    }
+
+    function renderAlertsTable() {
+      const tbody = document.getElementById('alertsTableBody');
+      tbody.innerHTML = ALERTS_DATA.map(a => `
+        <tr>
+          <td><span class="code-badge ${a.sev === 'warn' ? 'warn' : ''}">${a.code}</span></td>
+          <td><strong>${a.name}</strong></td>
+          <td>${a.cause}</td>
+          <td>${a.action}</td>
+        </tr>
+      `).join('');
+    }
+
+    function setGuideFilter(cat, btn) {
+      currentGuideFilter = cat;
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      filterGuide();
+    }
+
+    function filterGuide() {
+      const q = document.getElementById('guideSearchInput').value.trim().toLowerCase();
+      document.querySelectorAll('.guide-section').forEach(sec => {
+        const catMatch = currentGuideFilter === 'all' || sec.getAttribute('data-cat') === currentGuideFilter;
+        const textMatch = !q || sec.textContent.toLowerCase().includes(q);
+        sec.style.display = (catMatch && textMatch) ? '' : 'none';
+      });
+      document.querySelectorAll('#alertsTableBody tr').forEach(tr => {
+        const textMatch = !q || tr.textContent.toLowerCase().includes(q);
+        tr.style.display = textMatch ? '' : 'none';
+      });
+    }
+
+    /* =========================================================
+       TAB 3: AI KNOWLEDGE-BASE ASSISTANT
+    ========================================================= */
+    const KNOWLEDGE_BASE = [
+      {
+        name: 'دليل مستخدم Tandem t:slim X2 (Control-IQ 7.8.1).pdf',
+        builtin: true,
+        content: `مضخة Tandem t:slim X2 مزودة بتقنية Control-IQ 7.8.1 وحساس Dexcom G7. رمز فتح الشاشة هو 1-2-3. يتم تغيير الخزان وطقم التسريب كل 72 ساعة لإنسولين NovoRapid وكل 48 ساعة لإنسولين Humalog (تركيز U-100 فقط). يجب إبقاء جزء بسيط من الإبرة الفضية ظاهرًا عند تعبئة الخزان لتجنب ثقب الغشاء الداخلي. تصنيف مقاومة الماء IP27 (0.91 متر لمدة 30 دقيقة). المضخة MR Unsafe ويجب نزعها قبل MRI أو CT أو X-Ray.`
+      },
+      {
+        name: 'بروتوكول التثقيف الصحي والطوارئ (MNGHA / VitalAire).pdf',
+        builtin: true,
+        content: `القاعدة الذهبية للساعتين: إذا ارتفع السكر فوق 250 ملغ/دل ولم ينخفض خلال ساعتين من الجرعة التصحيحية، افحص الكيتونات، أعطِ التصحيح بقلم الإنسولين الخارجي، وغيّر الخزان وطقم التسريب بالكامل. أرقام الطوارئ: الهلال الأحمر السعودي 997، الدعم الفني الموحد VitalAire 920023202، خط التثقيف السريري 0556657474.`
+      }
+    ];
+
+    function renderKbDocs() {
+      const list = document.getElementById('kbDocList');
+      list.innerHTML = KNOWLEDGE_BASE.map(d => `
+        <div class="kb-doc-item">
+          <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:210px;">📄 ${d.name}</span>
+          <span style="color:var(--accent-emerald); font-weight:800;">${d.builtin ? 'معتمد' : 'مرفق'}</span>
+        </div>
+      `).join('');
+    }
+
+    function handleKbUpload(e) {
+      const files = Array.from(e.target.files);
+      files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = ev => {
+          KNOWLEDGE_BASE.push({
+            name: file.name,
+            builtin: false,
+            content: String(ev.target.result).slice(0, 15000)
+          });
+          renderKbDocs();
+          appendChatMsg('bot', `✅ تم تحميل الملف <strong>${file.name}</strong> وإضافته إلى قاعدة المعرفة النشطة للمساعد الذكي.`);
+        };
+        reader.readAsText(file);
+      });
+    }
+
+    function askQuick(q) {
+      document.getElementById('chatInput').value = q;
+      sendChatMessage();
+    }
+
+    function appendChatMsg(role, html) {
+      const box = document.getElementById('chatMessages');
+      const div = document.createElement('div');
+      div.className = 'msg ' + role;
+      div.innerHTML = html;
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    async function sendChatMessage() {
+      const inp = document.getElementById('chatInput');
+      const q = inp.value.trim();
+      if (!q) return;
+      inp.value = '';
+      appendChatMsg('user', q);
+
+      const apiKey = document.getElementById('geminiApiKey').value.trim();
+      if (apiKey) {
+        try {
+          const context = KNOWLEDGE_BASE.map(k => `[${k.name}]: ${k.content}`).join('\n');
+          const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${encodeURIComponent(apiKey)}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: `أنت مثقف صحي سريري متخصص في مضخة Tandem t:slim X2 (Control-IQ 7.8.1) وحساس Dexcom G7. أجب باللغة العربية بدقة بالاعتماد على المراجع التالية:\n${context}\n\nالسؤال: ${q}` }] }]
+            })
+          });
+          const data = await res.json();
+          const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (reply) {
+            appendChatMsg('bot', reply.replace(/\n/g, '<br>'));
+            return;
+          }
+        } catch (err) {}
+      }
+
+      const ql = q.toLowerCase();
+      let ans = '';
+
+      if (ql.includes('ساعتين') || ql.includes('الذهبية') || ql.includes('250') || ql.includes('ارتفاع')) {
+        ans = `<strong>⏳ القاعدة الذهبية للساعتين (Golden 2-Hour Rule):</strong><br>
+        إذا ارتفع سكر الدم فوق <strong>250 ملغ/دل</strong> ولم ينخفض خلال <strong>ساعتين</strong> بعد إعطاء جرعة تصحيحية بالمضخة:<br>
+        1. افحص <strong>الكيتونات</strong> في الدم أو البول فورًا.<br>
+        2. أعطِ الجرعة التصحيحية باستخدام <strong>قلم الإنسولين الخارجي</strong> وليس عبر المضخة.<br>
+        3. استبدل <strong>الخزان وطقم التسريب بالكامل</strong> في موقع حقن جديد بعيدًا عن السابق.`;
+      } else if (ql.includes('2a') || ql.includes('انسداد') || ql.includes('occlusion')) {
+        ans = `<strong>🚨 التعامل مع إنذار انسداد (2A Occlusion Alarm):</strong><br>
+        1. افحص مستوى الجلوكوز والكيتونات فورًا.<br>
+        2. استبدل <strong>الكانيولا والخزان</strong> بالكامل بموقع حقن جديد.<br>
+        3. إذا كان السكر > 250 ملغ/دل، أعطِ الجرعة التصحيحية بقلم الإنسولين الخارجي.`;
+      } else if (ql.includes('novorapid') || ql.includes('humalog') || ql.includes('نوفورابيد') || ql.includes('هومالوج') || ql.includes('مدة')) {
+        ans = `<strong>💉 مدة تغيير الإنسولين في مضخة Tandem t:slim X2:</strong><br>
+        • <strong>NovoRapid (U-100):</strong> كل <strong>72 ساعة (3 أيام)</strong>.<br>
+        • <strong>Humalog (U-100):</strong> كل <strong>48 ساعة (يومين)</strong>.`;
+      } else if (ql.includes('سفر') || ql.includes('مطار') || ql.includes('mri') || ql.includes('أشعة') || ql.includes('اشعة')) {
+        ans = `<strong>✈️ قواعد السفر والأشعة:</strong><br>
+        • بوابات كشف المعادن آمنة، بينما <strong>يُمنع</strong> تمرير المضخة في أشعة الحقائب X-Ray أو الماسح الكامل للجسم.<br>
+        • تصنيف <strong>MR Unsafe</strong>: يجب فصل المضخة والحساس قبل MRI أو CT.`;
+      } else if (ql.includes('إبرة') || ql.includes('ابرة') || ql.includes('فضية') || ql.includes('خزان')) {
+        ans = `<strong>🎯 تقنية إدخال الإبرة في خزان تاندم:</strong><br>
+        توقف فور الشعور بالمقاومة بحيث <strong>يبقى جزء بسيط من الإبرة الفضية ظاهرًا (~3–4 مم)</strong> لتجنب ثقب الغشاء الداخلي للخزان.`;
+      } else {
+        const matched = KNOWLEDGE_BASE.filter(d => d.content.toLowerCase().includes(ql.split(' ')[0]));
+        if (matched.length > 0) {
+          ans = `<strong>📄 نتيجة البحث (${matched[0].name}):</strong><br>${matched[0].content}`;
+        } else {
+          ans = `بناءً على دليل <strong>Tandem t:slim X2 (Control-IQ 7.8.1)</strong>: رمز فتح الشاشة هو <strong>1-2-3</strong>، وتصنيف مقاومة الماء هو <strong>IP27</strong>. اسأل عن أي رمز تنبيه (مثل <code>2A</code> أو <code>24A</code>) أو خطوة من خطوات التحضير.`;
+        }
+      }
+
+      setTimeout(() => appendChatMsg('bot', ans), 200);
+    }
+
+    /* =========================================================
+       INITIALIZATION
+    ========================================================= */
+    function initAcademyApp() {
+      try { initTactilePointerListeners(); } catch (e) { console.error(e); }
+      try { updateLabUI(); } catch (e) { console.error(e); }
+      try { init3DControls(); } catch (e) { console.error(e); }
+      try { draw3DPump(); } catch (e) { console.error(e); }
+      try { renderGuideCards(); } catch (e) { console.error(e); }
+      try { renderAlertsTable(); } catch (e) { console.error(e); }
+      try { renderKbDocs(); } catch (e) { console.error(e); }
+
+      setTimeout(() => {
+        try {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = 'https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap';
+          document.head.appendChild(link);
+        } catch (e) {}
+      }, 150);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAcademyApp);
+    } else {
+      initAcademyApp();
+    }
+  </script>
+</body>
+</html>
